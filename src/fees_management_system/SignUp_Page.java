@@ -105,7 +105,6 @@ public class SignUp_Page extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         popupMenu1 = new java.awt.PopupMenu();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -121,7 +120,6 @@ public class SignUp_Page extends javax.swing.JFrame {
         txt_contactno = new javax.swing.JTextField();
         txt_password = new javax.swing.JPasswordField();
         txt_confirmpassword = new javax.swing.JPasswordField();
-        txt_dob = new com.toedter.calendar.JDateChooser();
         btn_signup = new javax.swing.JButton();
         btn_login = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -232,8 +230,6 @@ public class SignUp_Page extends javax.swing.JFrame {
             }
         });
 
-        txt_dob.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-
         btn_signup.setBackground(new java.awt.Color(0, 51, 51));
         btn_signup.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btn_signup.setForeground(new java.awt.Color(134, 134, 134));
@@ -293,8 +289,7 @@ public class SignUp_Page extends javax.swing.JFrame {
                         .addComponent(jLabel6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txt_dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                    .addComponent(txt_confirmpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_confirmpassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                     .addComponent(txt_password, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_username, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_lastname, javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,7 +302,7 @@ public class SignUp_Page extends javax.swing.JFrame {
                         .addComponent(lbl_password_error, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(lbl_contact_error, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addComponent(lbl_contact_error, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -321,7 +316,7 @@ public class SignUp_Page extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_lastname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -339,9 +334,7 @@ public class SignUp_Page extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txt_confirmpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_dob, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -453,7 +446,6 @@ public void checkContactNo()
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_login;
     private javax.swing.JButton btn_signup;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -469,7 +461,6 @@ public void checkContactNo()
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JPasswordField txt_confirmpassword;
     private javax.swing.JTextField txt_contactno;
-    private com.toedter.calendar.JDateChooser txt_dob;
     private javax.swing.JTextField txt_firstname;
     private javax.swing.JTextField txt_lastname;
     private javax.swing.JPasswordField txt_password;
