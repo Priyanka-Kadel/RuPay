@@ -138,23 +138,23 @@ public class Signup_Page extends javax.swing.JFrame {
         {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/fees_management_system","root","root");
-            String sql="insert into signup values (?,?,?,?,?,?,?)";
+            String sql="insert into signup values (?,?,?,?,?,?)";
             PreparedStatement stmt=con.prepareStatement(sql);
-            stmt.setInt(1,getId());
-            stmt.setString(2,fname);
-            stmt.setString(3,lname);
-            stmt.setString(4,uname);
-            stmt.setString(5,password);
-            stmt.setString(6,myDob);
-            stmt.setString(7,contact_no);
+//            stmt.setInt(1,getId());
+            stmt.setString(1,fname);
+            stmt.setString(2,lname);
+            stmt.setString(3,uname);
+            stmt.setString(4,password);
+            stmt.setString(5,myDob);
+            stmt.setString(6,contact_no);
             int i=stmt.executeUpdate();
             if(i<0)
             {
-                JOptionPane.showMessageDialog(this, "record inserted");
+                JOptionPane.showMessageDialog(this, "record not inserted");
             }
             else
             {
-                JOptionPane.showMessageDialog(this,"record not inserted");
+                JOptionPane.showMessageDialog(this,"record inserted");
             }     
         }
                      
