@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package fees_management_system;
 
 /**
  *
  * @author User
  */
-public class JavaApplication1 {
+public class Fees_Management_System {
 
     /**
      * @param args the command line arguments

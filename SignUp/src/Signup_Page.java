@@ -35,10 +35,10 @@ public class Signup_Page extends javax.swing.JFrame {
         ResultSet rs=null;
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/rupayy","root","root");
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/fees_management_system","root","root");
             String sql="select max(id)from signup";
             Statement st=(Statement) con.createStatement();
-            rs= st.executeQuery(sql); 
+//            rs= st.executeQuery(sql); 
             while (rs.next())
             {
                 id=rs.getInt(1);
@@ -137,7 +137,7 @@ public class Signup_Page extends javax.swing.JFrame {
         try 
         {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/fees_management","root","root");
+            Connection con=DriverManager.getConnection("jdbc:derby://localhost:1527/fees_management_system","root","root");
             String sql="insert into signup values (?,?,?,?,?,?,?)";
             PreparedStatement stmt=con.prepareStatement(sql);
             stmt.setInt(1,getId());
@@ -148,7 +148,7 @@ public class Signup_Page extends javax.swing.JFrame {
             stmt.setString(6,myDob);
             stmt.setString(7,contact_no);
             int i=stmt.executeUpdate();
-            if(i>0)
+            if(i<0)
             {
                 JOptionPane.showMessageDialog(this, "record inserted");
             }
