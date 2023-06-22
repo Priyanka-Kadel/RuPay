@@ -81,7 +81,7 @@ public class Add_fees extends javax.swing.JFrame {
                 comboCourse.addItem(rs.getString("cname"));
             }
             
-            
+            pst.close();
         }catch(Exception e){
             e.printStackTrace();
            
@@ -225,6 +225,7 @@ public class Add_fees extends javax.swing.JFrame {
         textAreaScroll1 = new view.custom.textarea.TextAreaScroll();
         txt_remark = new view.custom.textarea.TextArea();
         combo_PaymentMode = new view.custom.Combobox();
+        jSeparator5 = new javax.swing.JSeparator();
         bg = new javax.swing.JLabel();
 
         date.setForeground(new java.awt.Color(255, 226, 57));
@@ -589,6 +590,7 @@ public class Add_fees extends javax.swing.JFrame {
             }
         });
         workng_panel.add(combo_PaymentMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 210, 60));
+        workng_panel.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
         scroll.setViewportView(workng_panel);
 
@@ -770,6 +772,7 @@ public class Add_fees extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel lbl_bank;
     private javax.swing.JLabel lbl_cheque;
     private javax.swing.JLabel lbl_pmode;
