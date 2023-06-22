@@ -1,0 +1,545 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package view.frames;
+import static Controller.LinkManager.Addfees;
+import static Controller.LinkManager.Dashboard;
+import static Controller.LinkManager.Edit;
+import static Controller.LinkManager.Quit;
+import static Controller.LinkManager.SearchRecord;
+import static Controller.LinkManager.ViewAll;
+import static Controller.LinkManager.ViewCourse;
+import static Controller.LinkManager.ViewReport;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
+import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
+
+
+/**
+ *
+ * @author rolen
+ */
+public class Edit_Course extends javax.swing.JFrame {
+
+    /**
+     * Creates new form Dashboard
+     */
+    DefaultTableModel model;
+    public Edit_Course() {
+        initComponents(); 
+        setRecordsToTable();
+        
+    }
+    public void setRecordsToTable(){
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("select * from course");
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+                String courseId = rs.getString("id");
+                String cname = rs.getString("cname");
+                String cost = rs.getString("cost");
+                
+                
+                Object[] obj = {courseId,cname,cost};
+                
+                model = (DefaultTableModel)tbl_courseData.getModel();
+                model.addRow(obj);
+            }
+        
+        
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void clearTable(){
+        DefaultTableModel model = (DefaultTableModel)tbl_courseData.getModel();
+        model.setRowCount(0);    
+    } 
+
+    public void addCourse(int id, String cname, double cost){
+        
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("insert into course values(?,?,?)");
+            pst.setInt(1, id);
+            pst.setString(2, cname);
+            pst.setDouble(3, cost);
+            
+            int rowCount = pst.executeUpdate();
+            if (rowCount == 1){
+                JOptionPane.showMessageDialog(this, "course added sucessfully");                         
+                clearTable();
+                setRecordsToTable();
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "course insertion field");
+            
+            }
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "course insertion field");
+            e.printStackTrace();
+        }
+    
+    }
+    
+    public void update(int id , String cname, double cost){
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("update course set cname = ?, cost = ? WHERE id = ?");
+            
+            pst.setString(1, cname);
+            pst.setDouble(2, cost);
+            pst.setInt(3, id);
+            
+            int rowCount = pst.executeUpdate();
+            if (rowCount == 1){
+                JOptionPane.showMessageDialog(this, "course updated sucessfully");                         
+                clearTable();
+                setRecordsToTable();
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "course updation field");
+            
+            }
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "course updation field");
+            e.printStackTrace();
+        }      
+  
+   }
+    
+    public void delete(int id){
+        try{
+            Connection con = DBConnection.getConnection();
+            PreparedStatement pst = con.prepareStatement("delete from course where id = ?");
+         
+            pst.setInt(1, id);
+            
+            int rowCount = pst.executeUpdate();
+            if (rowCount == 1){
+                JOptionPane.showMessageDialog(this, "course deleted sucessfully");                         
+                clearTable();
+                setRecordsToTable();
+            
+            }else{
+                JOptionPane.showMessageDialog(this, "course deletion field");
+            
+            }
+            
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "course deletion field");
+            e.printStackTrace();
+        }      
+  
+   }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        main_panel = new javax.swing.JPanel();
+        sidebar = new test.RoundPanel();
+        side_logo = new javax.swing.JLabel();
+        btn_dash = new button.Button();
+        add_fees = new button.Button();
+        search_records = new button.Button();
+        view_all_records = new button.Button();
+        edit_course = new button.Button();
+        view_courses = new button.Button();
+        view_report = new button.Button();
+        btn_logout = new button.Button();
+        inner_panel = new test.RoundPanel();
+        Add_fees = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbl_courseData = new javax.swing.JTable();
+        txt_courseName = new javax.swing.JTextField();
+        txt_coursePrice = new javax.swing.JTextField();
+        txt_courseId = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        bg = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        main_panel.setBackground(new java.awt.Color(62, 62, 62));
+        main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        sidebar.setBackground(new java.awt.Color(82, 82, 82));
+        sidebar.setRoundBottomRight(50);
+        sidebar.setRoundTopRight(50);
+        sidebar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        side_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/dash_logo.png"))); // NOI18N
+        sidebar.add(side_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 230, 120));
+
+        btn_dash.setBackground(new java.awt.Color(82, 82, 82));
+        btn_dash.setForeground(new java.awt.Color(252, 252, 252));
+        btn_dash.setText("Dashboard");
+        btn_dash.setFont(new java.awt.Font("Noto Sans", 1, 44)); // NOI18N
+        btn_dash.setShadowColor(new java.awt.Color(82, 82, 82));
+        btn_dash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_dashActionPerformed(evt);
+            }
+        });
+        sidebar.add(btn_dash, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        add_fees.setBackground(new java.awt.Color(65, 65, 65));
+        add_fees.setForeground(new java.awt.Color(214, 173, 87));
+        add_fees.setText("Add Fees");
+        add_fees.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        add_fees.setRound(60);
+        add_fees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_feesActionPerformed(evt);
+            }
+        });
+        sidebar.add(add_fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 330, 70));
+
+        search_records.setBackground(new java.awt.Color(65, 65, 65));
+        search_records.setForeground(new java.awt.Color(214, 173, 87));
+        search_records.setText("Search Records");
+        search_records.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        search_records.setRound(60);
+        search_records.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                search_recordsActionPerformed(evt);
+            }
+        });
+        sidebar.add(search_records, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 470, 330, 70));
+
+        view_all_records.setBackground(new java.awt.Color(65, 65, 65));
+        view_all_records.setForeground(new java.awt.Color(214, 173, 87));
+        view_all_records.setText("View all Records");
+        view_all_records.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        view_all_records.setRound(60);
+        view_all_records.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                view_all_recordsActionPerformed(evt);
+            }
+        });
+        sidebar.add(view_all_records, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 550, 330, 70));
+
+        edit_course.setBackground(new java.awt.Color(214, 173, 87));
+        edit_course.setForeground(new java.awt.Color(65, 65, 65));
+        edit_course.setText("Edit Course");
+        edit_course.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        edit_course.setRound(60);
+        edit_course.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_courseActionPerformed(evt);
+            }
+        });
+        sidebar.add(edit_course, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 630, 330, 70));
+
+        view_courses.setBackground(new java.awt.Color(65, 65, 65));
+        view_courses.setForeground(new java.awt.Color(214, 173, 87));
+        view_courses.setText("View Courses");
+        view_courses.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        view_courses.setRound(60);
+        view_courses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                view_coursesActionPerformed(evt);
+            }
+        });
+        sidebar.add(view_courses, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 710, 330, 70));
+
+        view_report.setBackground(new java.awt.Color(65, 65, 65));
+        view_report.setForeground(new java.awt.Color(214, 173, 87));
+        view_report.setText("View Report");
+        view_report.setFont(new java.awt.Font("Droid Sans", 1, 36)); // NOI18N
+        view_report.setRound(60);
+        view_report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                view_reportActionPerformed(evt);
+            }
+        });
+        sidebar.add(view_report, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 790, 330, 70));
+
+        btn_logout.setBackground(new java.awt.Color(120, 120, 120));
+        btn_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/logout.png"))); // NOI18N
+        btn_logout.setRound(100);
+        btn_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logoutActionPerformed(evt);
+            }
+        });
+        sidebar.add(btn_logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 890, 110, 100));
+
+        main_panel.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 1050));
+
+        inner_panel.setBackground(new java.awt.Color(62, 62, 62));
+        inner_panel.setRoundBottomLeft(40);
+        inner_panel.setRoundBottomRight(40);
+        inner_panel.setRoundTopLeft(40);
+        inner_panel.setRoundTopRight(40);
+        inner_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Add_fees.setFont(new java.awt.Font("Noto Sans", 1, 48)); // NOI18N
+        Add_fees.setForeground(new java.awt.Color(242, 242, 242));
+        Add_fees.setText("Edit Course");
+        inner_panel.add(Add_fees, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, 320, 80));
+
+        tbl_courseData.setBackground(new java.awt.Color(153, 153, 153));
+        tbl_courseData.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tbl_courseData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course Id", "Course Name", "Course Price"
+            }
+        ));
+        tbl_courseData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_courseDataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl_courseData);
+
+        inner_panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 750, 620));
+
+        txt_courseName.setBackground(new java.awt.Color(204, 204, 204));
+        txt_courseName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inner_panel.add(txt_courseName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 220, 40));
+
+        txt_coursePrice.setBackground(new java.awt.Color(204, 204, 204));
+        txt_coursePrice.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inner_panel.add(txt_coursePrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, 220, 40));
+
+        txt_courseId.setBackground(new java.awt.Color(204, 204, 204));
+        txt_courseId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        inner_panel.add(txt_courseId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 220, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel1.setText("Course Price:");
+        inner_panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 110, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel2.setText("Course Id:");
+        inner_panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 110, 30));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel3.setText("Course Name:");
+        inner_panel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 120, 30));
+
+        jButton1.setBackground(new java.awt.Color(62, 62, 62));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(242, 242, 242));
+        jButton1.setText("DELETE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        inner_panel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 580, 100, 40));
+
+        jButton2.setBackground(new java.awt.Color(62, 62, 62));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(242, 242, 242));
+        jButton2.setText("ADD");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        inner_panel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 80, 40));
+
+        jButton3.setBackground(new java.awt.Color(62, 62, 62));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(242, 242, 242));
+        jButton3.setText("UPDATE");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        inner_panel.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, 110, 40));
+
+        main_panel.add(inner_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 1220, 850));
+
+        bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
+        bg.setText("background");
+        main_panel.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 1480, 1050));
+
+        getContentPane().add(main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dashActionPerformed
+    Dashboard();
+    this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_btn_dashActionPerformed
+
+    private void search_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_recordsActionPerformed
+    SearchRecord();
+    this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_search_recordsActionPerformed
+
+    private void view_all_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_all_recordsActionPerformed
+    ViewAll();
+        this.dispose();          // TODO add your handling code here:
+    }//GEN-LAST:event_view_all_recordsActionPerformed
+
+    private void edit_courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_courseActionPerformed
+    Edit();
+    this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_edit_courseActionPerformed
+
+    private void view_coursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_coursesActionPerformed
+    ViewCourse();
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_view_coursesActionPerformed
+
+    private void view_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_reportActionPerformed
+    ViewReport();
+        this.dispose();         // TODO add your handling code here:
+    }//GEN-LAST:event_view_reportActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+    Quit();          // TODO add your handling code here:
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void add_feesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_feesActionPerformed
+    Addfees();
+    this.dispose();
+    }//GEN-LAST:event_add_feesActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int id = Integer.parseInt(txt_courseId.getText());
+        String cname = (txt_courseName.getText());
+        double cost = Double.parseDouble(txt_coursePrice.getText());
+        
+        update(id, cname, cost);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tbl_courseDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_courseDataMouseClicked
+    int rowNo = tbl_courseData.getSelectedRow();
+    TableModel model = tbl_courseData.getModel();
+    
+    txt_courseId.setText(model.getValueAt(rowNo, 0).toString());
+    txt_courseName.setText((String)model.getValueAt(rowNo, 1));
+    txt_coursePrice.setText(model.getValueAt(rowNo, 2).toString());
+    }//GEN-LAST:event_tbl_courseDataMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+        int id = Integer.parseInt(txt_courseId.getText());
+        String cname = txt_courseName.getText();
+        double cost = Double.parseDouble(txt_coursePrice.getText());
+        
+        addCourse(id, cname,cost);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int id = Integer.parseInt(txt_courseId.getText());
+        
+        
+        delete(id);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+
+        
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Edit_Course.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Edit_Course.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Edit_Course.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Edit_Course.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Edit_Course().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Add_fees;
+    private button.Button add_fees;
+    private javax.swing.JLabel bg;
+    private button.Button btn_dash;
+    private button.Button btn_logout;
+    private button.Button edit_course;
+    private test.RoundPanel inner_panel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel main_panel;
+    private button.Button search_records;
+    private javax.swing.JLabel side_logo;
+    private test.RoundPanel sidebar;
+    private javax.swing.JTable tbl_courseData;
+    private javax.swing.JTextField txt_courseId;
+    private javax.swing.JTextField txt_courseName;
+    private javax.swing.JTextField txt_coursePrice;
+    private button.Button view_all_records;
+    private button.Button view_courses;
+    private button.Button view_report;
+    // End of variables declaration//GEN-END:variables
+}
