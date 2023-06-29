@@ -1,4 +1,4 @@
-package DataAccess;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class dbaccess {
+public class queries {
 
     private static Connection getConnection() {
         Connection connection = null;
@@ -92,5 +92,47 @@ public class dbaccess {
         }
         
         return false;
+    }
+
+    public static boolean verifyanswers(String username, String q1, String q2, String q3) {
+        try {
+
+            Connection connection = getConnection();
+            String query = "SELECT q1, q2, q3 FROM signup WHERE uname = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, username);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                String dbQ1 = resultSet.getString("q1");
+                String dbQ2 = resultSet.getString("q2");
+                String dbQ3 = resultSet.getString("q3");
+                
+                boolean match = q1.equals(dbQ1) && q2.equals(dbQ2) && q3.equals(dbQ3);
+                
+                resultSet.close();
+                statement.close();
+                connection.close();
+                return match;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+    public static boolean updatePassword(String uname, String newPassword) {
+    try (Connection connection = getConnection()) {
+        String updateQuery = "UPDATE signup SET pwd = ? WHERE uname = ?";
+        PreparedStatement statement = connection.prepareStatement(updateQuery);
+        statement.setString(1, newPassword);
+        statement.setString(2, uname);
+        int rowsUpdated = statement.executeUpdate();
+
+        return rowsUpdated > 0;
+    } catch (SQLException e) {
+        System.out.println("Error updating password: " + e.getMessage());
+        return false;
+    }
     }
 }
