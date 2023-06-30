@@ -308,7 +308,8 @@ try {
     }//GEN-LAST:event_btn_questionActionPerformed
 
     private void txt_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_unameActionPerformed
-        // TODO add your handling code here:
+       
+       
     }//GEN-LAST:event_txt_unameActionPerformed
 
     private void q1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q1ActionPerformed
