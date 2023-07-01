@@ -178,7 +178,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="textfield.TextField" name="q1">
+=======
+                    <Component class="textfield.TextField" name="txt_pwd">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="42" green="42" red="42" type="rgb"/>
@@ -186,18 +190,30 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
+<<<<<<< HEAD
                         <Property name="text" type="java.lang.String" value="What is your Favourite Food?"/>
+=======
+                        <Property name="text" type="java.lang.String" value="     Enter Password"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                         <Property name="round" type="int" value="45"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="q1ActionPerformed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="60" y="300" width="270" height="-1"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwdActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="60" y="400" width="270" height="-1"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -216,7 +232,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="button.Button" name="btn_question">
+=======
+                    <Component class="button.Button" name="btn_signin">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
@@ -228,11 +248,19 @@
                         <Property name="round" type="int" value="50"/>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_questionActionPerformed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="130" y="470" width="150" height="50"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_signinActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="110" y="470" width="150" height="50"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -265,7 +293,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="button.Button" name="btn_reset">
+=======
+                    <Component class="button.Button" name="btn_signin1">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
@@ -277,7 +309,11 @@
                         <Property name="round" type="int" value="50"/>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_resetActionPerformed"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_signin1ActionPerformed"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -292,7 +328,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="textfield.TextField" name="cPW">
+=======
+                    <Component class="textfield.TextField" name="txt_pwd1">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="42" green="42" red="42" type="rgb"/>
@@ -307,7 +347,11 @@
                         </Property>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cPWActionPerformed"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwd1ActionPerformed"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -315,7 +359,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="textfield.TextField" name="q2">
+=======
+                    <Component class="textfield.TextField" name="txt_pwd2">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="42" green="42" red="42" type="rgb"/>
@@ -323,14 +371,22 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
+<<<<<<< HEAD
                         <Property name="text" type="java.lang.String" value="What is your Hobby?"/>
+=======
+                        <Property name="text" type="java.lang.String" value="     Enter Password"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                         <Property name="round" type="int" value="45"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="q2ActionPerformed"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwd2ActionPerformed"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -353,7 +409,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="button.Button" name="btn_verify">
+=======
+                    <Component class="button.Button" name="btn_signin2">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
@@ -365,7 +425,11 @@
                         <Property name="round" type="int" value="50"/>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_verifyActionPerformed"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_signin2ActionPerformed"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -380,7 +444,11 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+<<<<<<< HEAD
                     <Component class="textfield.TextField" name="q3">
+=======
+                    <Component class="textfield.TextField" name="txt_pwd3">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="42" green="42" red="42" type="rgb"/>
@@ -388,13 +456,18 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
+<<<<<<< HEAD
                         <Property name="text" type="java.lang.String" value="Where is your Favourite Place?"/>
+=======
+                        <Property name="text" type="java.lang.String" value="     Enter Password"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                         <Property name="round" type="int" value="45"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="39" green="e2" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="q3ActionPerformed"/>
                       </Events>
                       <Constraints>
@@ -404,6 +477,17 @@
                       </Constraints>
                     </Component>
                     <Component class="textfield.TextField" name="nPW">
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwd3ActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="60" y="300" width="270" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="textfield.TextField" name="txt_pwd4">
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="42" green="42" red="42" type="rgb"/>
@@ -418,7 +502,11 @@
                         </Property>
                       </Properties>
                       <Events>
+<<<<<<< HEAD
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nPWActionPerformed"/>
+=======
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwd4ActionPerformed"/>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

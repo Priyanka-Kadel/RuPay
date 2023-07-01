@@ -3,8 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view.frames;
+<<<<<<< HEAD
 import static Controller.LinkManager.Addfees;
 import static Controller.LinkManager.Dashboard;
+=======
+
+import javax.swing.JOptionPane;
+import static Controller.LinkManager.Addfees;
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 import static Controller.LinkManager.Edit;
 import static Controller.LinkManager.Quit;
 import static Controller.LinkManager.SearchRecord;
@@ -12,7 +18,10 @@ import static Controller.LinkManager.ViewAll;
 import static Controller.LinkManager.ViewCourse;
 import static Controller.LinkManager.ViewReport;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 /**
  *
  * @author rolen
@@ -23,7 +32,11 @@ public class Dashboard extends javax.swing.JFrame {
      * Creates new form Dashboard
      */
     public Dashboard() {
+<<<<<<< HEAD
         initComponents(); 
+=======
+        initComponents();
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }
 
     /**
@@ -46,9 +59,13 @@ public class Dashboard extends javax.swing.JFrame {
         view_courses = new button.Button();
         view_report = new button.Button();
         btn_logout = new button.Button();
+<<<<<<< HEAD
         inner_panel = new test.RoundPanel();
         Add_fees = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
+=======
+        jLabel1 = new javax.swing.JLabel();
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -160,6 +177,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         main_panel.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 1050));
 
+<<<<<<< HEAD
         inner_panel.setBackground(new java.awt.Color(62, 62, 62));
         inner_panel.setRoundBottomLeft(40);
         inner_panel.setRoundBottomRight(40);
@@ -176,12 +194,17 @@ public class Dashboard extends javax.swing.JFrame {
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
         bg.setText("background");
         main_panel.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 1480, 1050));
+=======
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
+        main_panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 1480, 1050));
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         getContentPane().add(main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void btn_dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dashActionPerformed
     Dashboard();
     this.dispose();// TODO add your handling code here:
@@ -190,25 +213,48 @@ public class Dashboard extends javax.swing.JFrame {
     private void search_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_recordsActionPerformed
     SearchRecord();
     this.dispose();// TODO add your handling code here:
+=======
+    private void add_feesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_feesActionPerformed
+    Addfees();
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_add_feesActionPerformed
+
+    private void search_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_recordsActionPerformed
+    SearchRecord();
+        this.dispose();        // TODO add your handling code here:
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }//GEN-LAST:event_search_recordsActionPerformed
 
     private void view_all_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_all_recordsActionPerformed
     ViewAll();
+<<<<<<< HEAD
         this.dispose();          // TODO add your handling code here:
+=======
+        this.dispose();        // TODO add your handling code here:
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }//GEN-LAST:event_view_all_recordsActionPerformed
 
     private void edit_courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_courseActionPerformed
     Edit();
+<<<<<<< HEAD
     this.dispose();        // TODO add your handling code here:
+=======
+    this.dispose();// TODO add your handling code here:
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }//GEN-LAST:event_edit_courseActionPerformed
 
     private void view_coursesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_coursesActionPerformed
     ViewCourse();
+<<<<<<< HEAD
         this.dispose();         // TODO add your handling code here:
+=======
+        this.dispose();        // TODO add your handling code here:
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }//GEN-LAST:event_view_coursesActionPerformed
 
     private void view_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_view_reportActionPerformed
     ViewReport();
+<<<<<<< HEAD
         this.dispose();         // TODO add your handling code here:
     }//GEN-LAST:event_view_reportActionPerformed
 
@@ -220,13 +266,28 @@ public class Dashboard extends javax.swing.JFrame {
     Addfees();
     this.dispose();
     }//GEN-LAST:event_add_feesActionPerformed
+=======
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_view_reportActionPerformed
+
+    private void btn_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logoutActionPerformed
+    Quit();       // TODO add your handling code here:
+    }//GEN-LAST:event_btn_logoutActionPerformed
+
+    private void btn_dashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_dashActionPerformed
+           // TODO add your handling code here:
+    }//GEN-LAST:event_btn_dashActionPerformed
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+<<<<<<< HEAD
 
         
+=======
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -249,9 +310,12 @@ public class Dashboard extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+<<<<<<< HEAD
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+=======
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -262,6 +326,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JLabel Add_fees;
     private button.Button add_fees;
     private javax.swing.JLabel bg;
@@ -269,6 +334,13 @@ public class Dashboard extends javax.swing.JFrame {
     private button.Button btn_logout;
     private button.Button edit_course;
     private test.RoundPanel inner_panel;
+=======
+    private button.Button add_fees;
+    private button.Button btn_dash;
+    private button.Button btn_logout;
+    private button.Button edit_course;
+    private javax.swing.JLabel jLabel1;
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     private javax.swing.JPanel main_panel;
     private button.Button search_records;
     private javax.swing.JLabel side_logo;

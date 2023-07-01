@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 package view.frames;
 
@@ -30,6 +31,32 @@ public class Signup_Frame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
+=======
+package view.frames;
+
+import static Controller.LinkManager.LoginFrame;
+import Controller.RegisterController;
+
+import model.RegisterModel;
+import static model.RegisterModel.*;
+
+import static DataAccess.dbaccess.checkContactNoExists;
+import static DataAccess.dbaccess.checkUsernameExists;
+
+import view.custom.scrollbar.ScrollBarCustom;
+
+import javax.swing.JOptionPane;
+
+public class Signup_Frame extends javax.swing.JFrame {
+    public Signup_Frame() {
+        initComponents();
+        scroll.setVerticalScrollBar(new ScrollBarCustom());
+
+    }
+
+    @SuppressWarnings("unchecked")
+
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -50,6 +77,10 @@ public class Signup_Frame extends javax.swing.JFrame {
         txt_pwd = new textfield.TextField();
         lbl_pwd_err = new javax.swing.JLabel();
         txt_cpwd = new textfield.TextField();
+<<<<<<< HEAD
+=======
+        txt_dob1 = new button.Button();
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_cont_no = new textfield.TextField();
         lbl_cont_err = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -57,11 +88,19 @@ public class Signup_Frame extends javax.swing.JFrame {
         question1 = new textfield.TextField();
         question2 = new textfield.TextField();
         question3 = new textfield.TextField();
+<<<<<<< HEAD
         txt_dob = new textfield.TextField();
         background = new javax.swing.JLabel();
 
         calendar.setForeground(new java.awt.Color(255, 226, 57));
         calendar.setDateFormat("yyyy-MM-dd");
+=======
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        txt_dob = new textfield.TextField();
+        lbl_age = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
+
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         calendar.setTextRefernce(txt_dob);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,6 +158,10 @@ public class Signup_Frame extends javax.swing.JFrame {
         scroll.setBorder(null);
 
         scrollpanel.setBackground(new java.awt.Color(62, 62, 62));
+<<<<<<< HEAD
+=======
+        scrollpanel.setBorder(null);
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         scrollpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_fname.setBackground(new java.awt.Color(66, 66, 66));
@@ -126,6 +169,7 @@ public class Signup_Frame extends javax.swing.JFrame {
         txt_fname.setText("    Full Name");
         txt_fname.setRound(45);
         txt_fname.setShadowColor(new java.awt.Color(255, 226, 57));
+<<<<<<< HEAD
         txt_fname.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_fnameMouseClicked(evt);
@@ -134,6 +178,8 @@ public class Signup_Frame extends javax.swing.JFrame {
                 txt_fnameMouseEntered(evt);
             }
         });
+=======
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fnameActionPerformed(evt);
@@ -143,7 +189,11 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         txt_uname.setBackground(new java.awt.Color(66, 66, 66));
         txt_uname.setForeground(new java.awt.Color(183, 183, 183));
+<<<<<<< HEAD
         txt_uname.setText("      Username");
+=======
+        txt_uname.setText("    Username");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_uname.setRound(45);
         txt_uname.setShadowColor(new java.awt.Color(255, 226, 57));
         txt_uname.addActionListener(new java.awt.event.ActionListener() {
@@ -151,16 +201,42 @@ public class Signup_Frame extends javax.swing.JFrame {
                 txt_unameActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
+=======
+        txt_uname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_unameKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_unameKeyReleased(evt);
+            }
+        });
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         scrollpanel.add(txt_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 270, -1));
 
         lbl_uname_err.setBackground(new java.awt.Color(66, 66, 66));
         lbl_uname_err.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         lbl_uname_err.setForeground(new java.awt.Color(254, 112, 113));
+<<<<<<< HEAD
+=======
+        lbl_uname_err.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbl_uname_errKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lbl_uname_errKeyReleased(evt);
+            }
+        });
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         scrollpanel.add(lbl_uname_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 270, 20));
 
         txt_pwd.setBackground(new java.awt.Color(66, 66, 66));
         txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
+<<<<<<< HEAD
         txt_pwd.setText("     Enter Password");
+=======
+        txt_pwd.setText("    Enter Password");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_pwd.setRound(45);
         txt_pwd.setShadowColor(new java.awt.Color(255, 226, 57));
         txt_pwd.addActionListener(new java.awt.event.ActionListener() {
@@ -180,11 +256,26 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         lbl_pwd_err.setBackground(new java.awt.Color(66, 66, 66));
         lbl_pwd_err.setForeground(new java.awt.Color(254, 112, 113));
+<<<<<<< HEAD
+=======
+        lbl_pwd_err.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbl_pwd_errKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lbl_pwd_errKeyReleased(evt);
+            }
+        });
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         scrollpanel.add(lbl_pwd_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 270, 20));
 
         txt_cpwd.setBackground(new java.awt.Color(66, 66, 66));
         txt_cpwd.setForeground(new java.awt.Color(183, 183, 183));
+<<<<<<< HEAD
         txt_cpwd.setText("     Confirm Password");
+=======
+        txt_cpwd.setText("    Confirm Password");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_cpwd.setRound(45);
         txt_cpwd.setShadowColor(new java.awt.Color(255, 226, 57));
         txt_cpwd.addActionListener(new java.awt.event.ActionListener() {
@@ -192,11 +283,39 @@ public class Signup_Frame extends javax.swing.JFrame {
                 txt_cpwdActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         scrollpanel.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 270, -1));
 
         txt_cont_no.setBackground(new java.awt.Color(66, 66, 66));
         txt_cont_no.setForeground(new java.awt.Color(183, 183, 183));
         txt_cont_no.setText("    Contact No");
+=======
+        txt_cpwd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_cpwdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cpwdKeyReleased(evt);
+            }
+        });
+        scrollpanel.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 270, -1));
+
+        txt_dob1.setBackground(new java.awt.Color(66, 66, 66));
+        txt_dob1.setForeground(new java.awt.Color(183, 183, 183));
+        txt_dob1.setText("...");
+        txt_dob1.setRound(30);
+        txt_dob1.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_dob1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_dob1ActionPerformed(evt);
+            }
+        });
+        scrollpanel.add(txt_dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 50, -1));
+
+        txt_cont_no.setBackground(new java.awt.Color(66, 66, 66));
+        txt_cont_no.setForeground(new java.awt.Color(183, 183, 183));
+        txt_cont_no.setText("    Contact No.");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         txt_cont_no.setRound(45);
         txt_cont_no.setShadowColor(new java.awt.Color(255, 226, 57));
         txt_cont_no.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +335,16 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         lbl_cont_err.setBackground(new java.awt.Color(66, 66, 66));
         lbl_cont_err.setForeground(new java.awt.Color(254, 112, 113));
+<<<<<<< HEAD
         scrollpanel.add(lbl_cont_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, 270, 20));
+=======
+        lbl_cont_err.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbl_cont_errKeyPressed(evt);
+            }
+        });
+        scrollpanel.add(lbl_cont_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 270, 20));
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         jSeparator2.setBackground(new java.awt.Color(66, 66, 66));
         jSeparator2.setForeground(new java.awt.Color(183, 183, 183));
@@ -241,7 +369,11 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         question2.setBackground(new java.awt.Color(66, 66, 66));
         question2.setForeground(new java.awt.Color(183, 183, 183));
+<<<<<<< HEAD
         question2.setText("     What is your hobby?");
+=======
+        question2.setText("    What is your hobby?");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         question2.setRound(45);
         question2.setShadowColor(new java.awt.Color(255, 226, 57));
         question2.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +385,11 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         question3.setBackground(new java.awt.Color(66, 66, 66));
         question3.setForeground(new java.awt.Color(183, 183, 183));
+<<<<<<< HEAD
         question3.setText("     Where is your favourite place?");
+=======
+        question3.setText("    What is your favourite place?");
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         question3.setRound(45);
         question3.setShadowColor(new java.awt.Color(255, 226, 57));
         question3.addActionListener(new java.awt.event.ActionListener() {
@@ -262,11 +398,16 @@ public class Signup_Frame extends javax.swing.JFrame {
             }
         });
         scrollpanel.add(question3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 270, -1));
+<<<<<<< HEAD
+=======
+        scrollpanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         txt_dob.setBackground(new java.awt.Color(66, 66, 66));
         txt_dob.setForeground(new java.awt.Color(183, 183, 183));
         txt_dob.setRound(45);
         txt_dob.setShadowColor(new java.awt.Color(255, 226, 57));
+<<<<<<< HEAD
         txt_dob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_dobActionPerformed(evt);
@@ -277,6 +418,33 @@ public class Signup_Frame extends javax.swing.JFrame {
         scroll.setViewportView(scrollpanel);
 
         login_pane.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 400, 340));
+=======
+        txt_dob.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_dobMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txt_dobMouseExited(evt);
+            }
+        });
+        txt_dob.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_dobKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_dobKeyReleased(evt);
+            }
+        });
+        scrollpanel.add(txt_dob, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 220, -1));
+
+        lbl_age.setBackground(new java.awt.Color(66, 66, 66));
+        lbl_age.setForeground(new java.awt.Color(254, 112, 113));
+        scrollpanel.add(lbl_age, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, 20));
+
+        scroll.setViewportView(scrollpanel);
+
+        login_pane.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 400, 340));
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         main_panel.add(login_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 400, 640));
 
@@ -295,10 +463,15 @@ public class Signup_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_signinActionPerformed
 
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
+<<<<<<< HEAD
      if(validation()){
             insertDataToDatabase();
             clearFields();
         }        // TODO add your handling code here:
+=======
+        RegisterController rcontrol= new RegisterController(getuser(),this);
+        rcontrol.registeruser();
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }//GEN-LAST:event_btn_signupActionPerformed
 
     private void txt_fnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fnameActionPerformed
@@ -334,6 +507,7 @@ public class Signup_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_question2ActionPerformed
 
     private void txt_pwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyPressed
+<<<<<<< HEAD
     checkPassword();        // TODO add your handling code here:
     }//GEN-LAST:event_txt_pwdKeyPressed
 
@@ -361,6 +535,126 @@ public class Signup_Frame extends javax.swing.JFrame {
     private void txt_dobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dobActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_dobActionPerformed
+=======
+        if (txt_pwd.getText().length() < 8) {
+            lbl_pwd_err.setText("Password Must be 8 characters long.");
+        } else {
+            lbl_pwd_err.setText("");
+        }
+
+    }//GEN-LAST:event_txt_pwdKeyPressed
+
+    private void txt_pwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyReleased
+        if (txt_pwd.getText().length() < 8) {
+            lbl_pwd_err.setText("Password Must be 8 characters long.");
+        } else {
+            lbl_pwd_err.setText("");
+
+        }
+    }//GEN-LAST:event_txt_pwdKeyReleased
+
+    private void txt_cont_noKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cont_noKeyPressed
+        if (txt_cont_no.getText().length() == 10) {
+            lbl_cont_err.setText("");
+        }
+        if (!checkContactNoExists(txt_cont_no.getText())) {
+            lbl_cont_err.setText("");
+        }
+    }//GEN-LAST:event_txt_cont_noKeyPressed
+
+    private void txt_cont_noKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cont_noKeyReleased
+        if (txt_cont_no.getText().length() != 10) {
+            lbl_cont_err.setText("Contact must be 10 digits long");
+
+        }
+        if (checkContactNoExists(txt_cont_no.getText())) {
+            lbl_cont_err.setText("Contact already in use");
+        }
+    }//GEN-LAST:event_txt_cont_noKeyReleased
+
+    private void txt_fnameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fnameMouseClicked
+
+    }//GEN-LAST:event_txt_fnameMouseClicked
+
+    private void txt_fnameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fnameMouseEntered
+
+    }//GEN-LAST:event_txt_fnameMouseEntered
+
+    private void lbl_uname_errKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_uname_errKeyPressed
+
+    }//GEN-LAST:event_lbl_uname_errKeyPressed
+
+    private void lbl_uname_errKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_uname_errKeyReleased
+
+    }//GEN-LAST:event_lbl_uname_errKeyReleased
+
+    private void lbl_cont_errKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_cont_errKeyPressed
+
+    }//GEN-LAST:event_lbl_cont_errKeyPressed
+
+    private void lbl_pwd_errKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_pwd_errKeyPressed
+
+    }//GEN-LAST:event_lbl_pwd_errKeyPressed
+
+    private void lbl_pwd_errKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_pwd_errKeyReleased
+
+    }//GEN-LAST:event_lbl_pwd_errKeyReleased
+
+    private void txt_unameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_unameKeyReleased
+        if (checkUsernameExists(txt_uname.getText())) {
+            lbl_uname_err.setText("Username Already Exists");
+        } else {
+            lbl_uname_err.setText("");
+        }
+
+    }//GEN-LAST:event_txt_unameKeyReleased
+
+    private void txt_unameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_unameKeyPressed
+        if (checkUsernameExists(txt_uname.getText())) {
+            lbl_uname_err.setText("Username Already Exists");
+        } else {
+            lbl_uname_err.setText("");
+        }
+    }//GEN-LAST:event_txt_unameKeyPressed
+
+    private void txt_cpwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyPressed
+        if (!samepwd(txt_pwd.getText(), txt_cpwd.getText())) {
+            lbl_pwd_err.setText("Passwords Don't Match.Try Again.");
+
+        } else
+            lbl_pwd_err.setText("");
+    }//GEN-LAST:event_txt_cpwdKeyPressed
+
+    private void txt_cpwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyReleased
+        if (!samepwd(txt_pwd.getText(), txt_cpwd.getText())) {
+            lbl_pwd_err.setText("Passwords Don't Match.Try Again.");
+        } else
+            lbl_pwd_err.setText("");
+    }//GEN-LAST:event_txt_cpwdKeyReleased
+
+    private void txt_dob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dob1ActionPerformed
+        calendar.showPopup();
+    }//GEN-LAST:event_txt_dob1ActionPerformed
+
+    private void txt_dobKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dobKeyReleased
+
+    }//GEN-LAST:event_txt_dobKeyReleased
+
+    private void txt_dobKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dobKeyPressed
+
+    }//GEN-LAST:event_txt_dobKeyPressed
+
+    private void txt_dobMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_dobMouseClicked
+
+    }//GEN-LAST:event_txt_dobMouseClicked
+
+    private void txt_dobMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_dobMouseExited
+        if (!isOlderThan18(txt_dob.getText())) {
+            lbl_age.setText("You must be 18 years or above.");
+        } else
+            lbl_age.setText("");
+    }//GEN-LAST:event_txt_dobMouseExited
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
     /**
      * @param args the command line arguments
@@ -388,10 +682,17 @@ public class Signup_Frame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Signup_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+<<<<<<< HEAD
+=======
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+<<<<<<< HEAD
                 new Signup_Frame().setVisible(true);
             }
         });
@@ -615,6 +916,113 @@ void insertDataToDatabase() {
         System.out.println("Error inserting data: " + e.getMessage());
     }
 }
+=======
+            }
+        });
+    }
+
+    public boolean isvalid() {
+        String fname = txt_fname.getText();
+        String uname = txt_uname.getText();
+        String pawd = txt_pwd.getText();
+        String cpawd = txt_cpwd.getText();
+//        String dob_ = txt_dob.getText();
+        String cont = txt_cont_no.getText();
+        String qu1 = question1.getText();
+        String qu2 = question2.getText();
+        String qu3 = question3.getText();
+
+        if (!fullnamevalidation(fname)) {
+            JOptionPane.showMessageDialog(this, "Please enter your Full name");
+            return false;
+        }
+        if (!usernamevalidation(uname)) {
+            JOptionPane.showMessageDialog(this, "Please enter your User name");
+            return false;
+        }
+        if (checkUsernameExists(uname)) {
+            JOptionPane.showMessageDialog(this, "Username Already Exists.Try a unique one.");
+            return false;
+        }
+        if (!pwdvalidation(pawd)) {
+            JOptionPane.showMessageDialog(this, "Please Enter your Password");
+            return false;
+        }
+        if (pawd.length() < 8) {
+            JOptionPane.showMessageDialog(this, "Password must be 8 characters long");
+            return false;
+        }
+        if (!cpwdvalidation(cpawd)) {
+            JOptionPane.showMessageDialog(this, "Please Confirm your Password");
+            return false;
+        }
+        if (!samepwd(pawd, cpawd)) {
+            JOptionPane.showMessageDialog(this, "Passwords don't match.Try Again.");
+            return false;
+        }
+
+        if (!isOlderThan18(txt_dob.getText())) {
+            JOptionPane.showMessageDialog(this, "You must be 18 years or above.");
+            return false;
+        }
+
+        if (!contactvalidation(cont)) {
+            JOptionPane.showMessageDialog(this, "Enter your Contact Number");
+            return false;
+        }
+        if (cont.length() != 10) {
+            JOptionPane.showMessageDialog(this, "Contact must be 10 digits long");
+            return false;
+        }
+        if (checkContactNoExists(txt_cont_no.getText())) {
+            JOptionPane.showMessageDialog(this, "Contact already in use");
+            return false;
+        }
+        if (!q1validation(qu1)) {
+            JOptionPane.showMessageDialog(this, "Please answer your favourite food");
+            return false;
+        }
+        if (!q2validation(qu2)) {
+            JOptionPane.showMessageDialog(this, "Please answer your hobby");
+            return false;
+        }
+        if (!q3validation(qu3)) {
+            JOptionPane.showMessageDialog(this, "Please answer your favourite place");
+            return false;
+        }
+        return true;
+    }
+    
+    public RegisterModel getuser(){
+        RegisterModel rmodel= new RegisterModel(
+                txt_fname.getText(),
+                txt_uname.getText(),
+                txt_pwd.getText(),
+                txt_cpwd.getText(),
+                txt_dob.getText(),
+                txt_cont_no.getText(),
+                question1.getText(),
+                question2.getText(),
+                question3.getText());
+    return rmodel;
+    }
+    
+    public void displaymessage(String msg){
+        JOptionPane.showMessageDialog(rootPane, msg);
+    }
+    
+    public void clearfields(){
+    txt_fname.setText("    Full Name");
+    txt_uname.setText("    User Name");
+    txt_pwd.setText("    Enter Password");
+    txt_cpwd.setText("    Confirm Password");
+    txt_cont_no.setText("   Contact No.");
+    question1.setText("    What is your favourite food?");
+    question2.setText("    What is your hobby?");
+    question3.setText("    What is your favourite place?");
+
+    }
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Create_an_acc;
@@ -624,9 +1032,17 @@ void insertDataToDatabase() {
     private button.Button btn_signup;
     private view.custom.datechooser.DateChooser calendar;
     private javax.swing.JLabel coin_logo;
+<<<<<<< HEAD
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+=======
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lbl_age;
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     private javax.swing.JLabel lbl_cont_err;
     private javax.swing.JLabel lbl_pwd_err;
     private javax.swing.JLabel lbl_uname_err;
@@ -640,8 +1056,16 @@ void insertDataToDatabase() {
     private textfield.TextField txt_cont_no;
     private textfield.TextField txt_cpwd;
     private textfield.TextField txt_dob;
+<<<<<<< HEAD
+=======
+    private button.Button txt_dob1;
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     private textfield.TextField txt_fname;
     private textfield.TextField txt_pwd;
     private textfield.TextField txt_uname;
     // End of variables declaration//GEN-END:variables
+<<<<<<< HEAD
+=======
+
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 }

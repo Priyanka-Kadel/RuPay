@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package Controller;
 
 import javax.swing.JOptionPane;
@@ -9,13 +10,29 @@ import view.frames.Login;
 import view.frames.Search_Records;
 import view.frames.Signup_Frame;
 import view.frames.View_All_Records;
+=======
+ package Controller;
+
+import javax.swing.JOptionPane;
+import view.frames.Add_fees;
+import view.frames.Dashboard;
+import view.frames.Edit_Course;
+import view.frames.Login_Frame;
+import view.frames.Search_Records;
+import view.frames.Signup_Frame;
+//import project.View_All_Records;
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
 import view.frames.View_Courses;
 import view.frames.View_Report;
 
 public class LinkManager {
     
     public static void LoginFrame() {
+<<<<<<< HEAD
         Login login = new Login();
+=======
+        Login_Frame login = new Login_Frame();
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
         login.setVisible(true);
     }
     
@@ -37,8 +54,13 @@ public class LinkManager {
         search.setVisible(true);        
     }
     public static void ViewAll() {
+<<<<<<< HEAD
         View_All_Records viewall=new View_All_Records();
         viewall.setVisible(true);       
+=======
+//        View_All_Records viewall=new View_All_Records();
+//        viewall.setVisible(true);       
+>>>>>>> a18137edbbf8d30a9c4a5c7d6c8af8c9b3514731
     }
     public static void Edit(){
         Edit_Course edit=new Edit_Course();
