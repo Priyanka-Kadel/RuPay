@@ -1,8 +1,8 @@
 # RuPay
 
-# Group-A C33B
+ # Group-A C33B
 
-![Alt Text](src/Assets/coin%20.png)
+![Alt Text](src/Assets/git_logo.png)
 
 ## Group Members
 
