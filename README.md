@@ -2,7 +2,8 @@
 
 # Group-A C33B
 
-![RuPay Logo] (src/Assets/coin.png)
+![Alt Text](src/Assets/coin.png)
+
 ## Group Members
 
     1. Kirtan Shrestha
