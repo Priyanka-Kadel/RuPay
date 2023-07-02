@@ -2,7 +2,7 @@
 
 # Group-A C33B
 
-![Alt Text](src/Assets/coin.png)
+![Alt Text](src/Assets/coin%20.png)
 
 ## Group Members
 
