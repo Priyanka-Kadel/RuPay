@@ -1,61 +1,81 @@
- package Controller;
+package Controller;
 
+import view.frames.*;
 import javax.swing.JOptionPane;
-import view.frames.Add_fees;
-import view.frames.Dashboard;
-import view.frames.Edit_Course;
-import view.frames.Login_Frame;
-import view.frames.Search_Records;
-import view.frames.Signup_Frame;
-//import project.View_All_Records;
-import view.frames.View_Courses;
-import view.frames.View_Report;
 
 public class LinkManager {
-    
+
     public static void LoginFrame() {
-        Login_Frame login = new Login_Frame();
-        login.setVisible(true);
+        Login_Frame lframe = new Login_Frame();
+        LoginController login = new LoginController(lframe);
+        lframe.setVisible(true);
     }
-    
-        public static void SignupFrame() {
-        Signup_Frame signup_frame = new Signup_Frame();
-        signup_frame.setVisible(true);
+
+    public static void SignupFrame() {
+        Signup_Frame sframe = new Signup_Frame();
+        RegisterController login = new RegisterController(sframe);
+        sframe.setVisible(true);
     }
-    public static void Dashboard(){
-        Dashboard dashboard=new Dashboard();
+
+    public static void Dashboard(String var) {
+        Dashboard dashboard = new Dashboard();
+        dashboard.welcome(var);
         dashboard.setVisible(true);
     }
-    public static void Addfees(){
-        Add_fees addfees =new Add_fees();
+
+    public static void Addfees(String var) {
+        Add_fees addfees = new Add_fees();
+        addfees.welcome(var);
         addfees.setVisible(true);
-        
+
     }
-    public static void SearchRecord(){
-        Search_Records search=new Search_Records();
-        search.setVisible(true);        
+
+    public static void Print(String var) {
+        Print_Receipt print = new Print_Receipt();
+        print.welcome(var);
+        print.setVisible(true);
+
     }
-    public static void ViewAll() {
-//        View_All_Records viewall=new View_All_Records();
-//        viewall.setVisible(true);       
+
+    public static void SearchRecord(String var) {
+        Search_Records search = new Search_Records();
+        search.welcome(var);
+        search.setVisible(true);
     }
-    public static void Edit(){
-        Edit_Course edit=new Edit_Course();
+
+    public static void Edit(String var) {
+        Courses edit = new Courses();
+        edit.welcome(var);
         edit.setVisible(true);
     }
-    public static void ViewCourse(){
-        View_Courses vcourse=new View_Courses();
-        vcourse.setVisible(true);
-    }
-    public static void ViewReport(){
-        View_Report report=new View_Report();
+
+    public static void ViewReport(String var) {
+        View_Report report = new View_Report();
+        report.welcome(var);
         report.setVisible(true);
     }
-    public static void Quit() {
-        int exit=JOptionPane.showConfirmDialog(null,  "Do you really want to Close Application","SELECT",JOptionPane.YES_NO_OPTION);
-     if (exit==0){
-         System.exit(0);
-     }
+
+    public static void Recovery() {
+        Recovery recovery = new Recovery();
+        recovery.setVisible(true);
     }
-    
+    public static void About() {
+        About_Us about = new About_Us();
+        about.setVisible(true);
+    }
+    public static void Acc(String var) {
+        Account_Settings acc = new Account_Settings();
+        acc.welcome(var);
+        acc.setVisible(true);
+    }
+
+    public static int Logout() {
+        int logout = JOptionPane.showConfirmDialog(null, "Confim Log Out?", "Select", JOptionPane.YES_NO_OPTION);
+        if (logout == 0) {
+            LoginFrame();
+            return 0;
+        } else {
+            return -1;
+        }
+    }
 }

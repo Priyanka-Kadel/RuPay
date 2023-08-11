@@ -2,7 +2,7 @@ package Controller;
 
 import model.RegisterModel;
 import view.frames.Signup_Frame;
-import DataAccess.dbaccess;
+import DAO.uqueries;
 
 public class RegisterController {
 
@@ -20,7 +20,7 @@ public class RegisterController {
 
     public void registeruser() {
         if (view.isvalid()) {
-            dbaccess.saveToDatabase(
+            uqueries.saveToDatabase(
                     rmodel.getfullname(),
                     rmodel.getusername(),
                     rmodel.getpwd(),

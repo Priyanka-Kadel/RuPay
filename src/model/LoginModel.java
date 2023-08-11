@@ -28,18 +28,10 @@ public class LoginModel {
     }
 
     public static boolean usernamevalidation(String var) {
-        if (var.equals("") || (var.equals("    Username"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Username"))||var.matches("\\s*"));
     }
 
     public static boolean pwdvalidation(String var) {
-        if (var.equals("") || (var.equals("    Enter Password"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Enter Password"))||var.matches("\\s*"));
     }
 }

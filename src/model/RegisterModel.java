@@ -101,87 +101,47 @@ public class RegisterModel {
     }
 
     public static boolean fullnamevalidation(String var) {
-        if (var.equals("") || (var.equals("    Full Name"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Full Name"))||var.matches("\\s*"));
     }
 
     public static boolean usernamevalidation(String var) {
-        if (var.equals("") || (var.equals("    Username"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Username"))||var.matches("\\s*"));
     }
 
     public static boolean pwdvalidation(String var) {
-        if (var.equals("") || (var.equals("    Enter Password"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Enter Password"))||var.matches("\\s*"));
     }
 
     public static boolean cpwdvalidation(String var) {
-        if (var.equals("") || (var.equals("    Confirm Password"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Confirm Password"))||var.matches("\\s*"));
     }
 
     public static boolean dobvalidation(String var) {
-        if (var.equals("    Date Of Birth")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !var.equals("    Date Of Birth");
     }
 
     public static boolean contactvalidation(String var) {
-        if (var.equals("") || (var.equals("    Contact No."))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    Contact No."))||var.matches("\\s*"));
     }
 
     public static boolean q1validation(String var) {
-        if (var.equals("") || (var.equals("    What is your favourite food?"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    What is your favourite food?"))||var.matches("\\s*"));
     }
 
     public static boolean q2validation(String var) {
-        if (var.equals("") || (var.equals("    What is your hobby?"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    What is your hobby?"))||var.matches("\\s*"));
     }
 
     public static boolean q3validation(String var) {
-        if (var.equals("") || (var.equals("    What is your favourite place?"))) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(var.equals("") || (var.equals("    What is your favourite place?"))||var.matches("\\s*"));
     }
 
     public static boolean samepwd(String var1, String var2) {
-        if (var1.equals(var2)) {
-            return true;
-        } else {
-            return false;
-        }
+        return var1.equals(var2);
     }
     
 public static boolean isOlderThan18(String dob) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     LocalDate dateOfBirth = LocalDate.parse(dob, formatter);
     LocalDate currentDate = LocalDate.now();
     int age = currentDate.getYear() - dateOfBirth.getYear();

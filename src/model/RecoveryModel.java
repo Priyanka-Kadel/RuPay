@@ -1,6 +1,6 @@
 package model;
 
-import static DAO.queries.*;
+import static DAO.uqueries.*;
 
 public class RecoveryModel {
 
@@ -68,7 +68,7 @@ public class RecoveryModel {
     }
 
     public static boolean usernamevalidation(String var) {
-        if (var.equals("") || (var.equals("    Username"))) {
+        if (var.equals("") || (var.equals("    Username"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;
@@ -76,7 +76,7 @@ public class RecoveryModel {
     }
 
     public static boolean pwdvalidation(String var) {
-        if (var.equals("") || (var.equals("New Password"))) {
+        if (var.equals("") || (var.equals("    New Password"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;
@@ -84,7 +84,7 @@ public class RecoveryModel {
     }
 
     public static boolean cpwdvalidation(String var) {
-        if (var.equals("") || (var.equals("    Confirm New Password"))) {
+        if (var.equals("") || (var.equals("    Confirm New Password"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;
@@ -92,7 +92,7 @@ public class RecoveryModel {
     }
 
     public static boolean q1validation(String var) {
-        if (var.equals("") || (var.equals("    What is your favourite food?"))) {
+        if (var.equals("") || (var.equals("    What is your favourite food?"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;
@@ -100,7 +100,7 @@ public class RecoveryModel {
     }
 
     public static boolean q2validation(String var) {
-        if (var.equals("") || (var.equals("    What is your hobby?"))) {
+        if (var.equals("") || (var.equals("    What is your hobby?"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;
@@ -108,7 +108,7 @@ public class RecoveryModel {
     }
 
     public static boolean q3validation(String var) {
-        if (var.equals("") || (var.equals("    What is your favourite place?"))) {
+        if (var.equals("") || (var.equals("    What is your favourite place?"))||var.matches("\\s*")) {
             return false;
         } else {
             return true;

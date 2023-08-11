@@ -1,6 +1,9 @@
 package Controller;
-import static DAO.queries.updatePassword;
+
+import static DAO.uqueries.updatePassword;
 import static model.RecoveryModel.reset;
+import Controller.LoginController;
+import view.frames.Login_Frame;
 import model.RecoveryModel;
 import view.frames.Recovery;
 
@@ -17,12 +20,16 @@ public class RecoveryController {
     public RecoveryController(Recovery view) {
         this.view = view;
     }
-    
-    public void resetuser(){
+
+    public void resetuser() {
         switch (reset(rmodel.getusername(), rmodel.getpwd(), rmodel.getcpwd())) {
             case 1:
                 updatePassword(rmodel.getusername(), rmodel.getcpwd());
                 view.displaymessage("Password reset Successful");
+                Login_Frame lview = new Login_Frame();
+                view.dispose();
+                lview.setVisible(true);
+
                 break;
             case -1:
                 view.displaymessage("Passwords don't match.Try again");

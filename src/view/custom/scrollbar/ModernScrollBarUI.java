@@ -14,7 +14,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class ModernScrollBarUI extends BasicScrollBarUI {
 
-    private final int THUMB_SIZE = 40;
+    private final int THUMB_SIZE = 120;
 
     @Override
     protected Dimension getMaximumThumbSize() {

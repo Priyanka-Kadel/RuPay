@@ -3,6 +3,7 @@ package passwordfield;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.geom.Area;
@@ -14,6 +15,12 @@ import javax.swing.plaf.basic.BasicPasswordFieldUI;
 import button.ShadowRenderer;
 
 public class PasswordField extends JPasswordField {
+
+    private int round = 10;
+    private Color shadowColor = new Color(170, 170, 170);
+    private BufferedImage imageShadow;
+    private final Insets shadowSize = new Insets(2, 5, 8, 5);
+    private boolean passwordVisible = false;
 
     public int getRound() {
         return round;
@@ -35,11 +42,6 @@ public class PasswordField extends JPasswordField {
         repaint();
     }
 
-    private int round = 10;
-    private Color shadowColor = new Color(170, 170, 170);
-    private BufferedImage imageShadow;
-    private final Insets shadowSize = new Insets(2, 5, 8, 5);
-
     public PasswordField() {
         setUI(new TextUI());
         setOpaque(false);
@@ -48,6 +50,20 @@ public class PasswordField extends JPasswordField {
         setSelectionColor(new Color(133, 209, 255));
         setBorder(new EmptyBorder(10, 12, 15, 12));
         setBackground(new Color(255, 255, 255));
+    }
+
+    public int togglepwdview() {
+        passwordVisible = !passwordVisible;
+        updateEchoChar();
+        return passwordVisible ? 1 : 0;
+    }
+
+    private void updateEchoChar() {
+        if (passwordVisible) {
+            setEchoChar((char) 0);
+        } else {
+            setEchoChar('\u2022');
+        }
     }
 
     @Override

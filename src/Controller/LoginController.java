@@ -1,8 +1,7 @@
 package Controller;
-
 import model.LoginModel;
 import view.frames.Login_Frame;
-import DataAccess.dbaccess;
+import DAO.uqueries;
 
 public class LoginController {
 
@@ -18,13 +17,17 @@ public class LoginController {
         this.view = view;
     }
 
-    public void verifyuser() {
+    public String verifyuser() {
         if (view.isvalid()) {
-            if (dbaccess.verifyLogin(lmodel.getusername(), lmodel.getpwd())) {
+            if (uqueries.verifyLogin(lmodel.getusername(), lmodel.getpwd())) {
                 view.displaymessage("Login Successful");
+                return "success";
             } else {
                 view.displaymessage("Incorrect Password");
+                return "failed";
             }
+        } else {
+            return "failed";
         }
     }
 }
