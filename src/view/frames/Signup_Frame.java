@@ -6,17 +6,41 @@ import Controller.RegisterController;
 import model.RegisterModel;
 import static model.RegisterModel.*;
 
-import static DataAccess.dbaccess.checkContactNoExists;
-import static DataAccess.dbaccess.checkUsernameExists;
+import static DAO.uqueries.checkContactNoExists;
+import static DAO.uqueries.checkUsernameExists;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 import view.custom.scrollbar.ScrollBarCustom;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import junit.framework.Assert;
 
 public class Signup_Frame extends javax.swing.JFrame {
+
     public Signup_Frame() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icon.png")));
         scroll.setVerticalScrollBar(new ScrollBarCustom());
+        txt_pwd.togglepwdview();
+        txt_cpwd.togglepwdview();
+        addPlaceholderStyle(txt_fname);
+        addPlaceholderStyle(txt_uname);
+        addPlaceholderStyle(txt_pwd);
+        addPlaceholderStyle(txt_cpwd);
+        addPlaceholderStyle(txt_cont_no);
+        addPlaceholderStyle(question1);
+        addPlaceholderStyle(question2);
+        addPlaceholderStyle(question3);
+
+    }
+
+    public void addPlaceholderStyle(JTextField textField) {
+
+    }
+
+    public void removePlaceholderStyle(JTextField textField) {
 
     }
 
@@ -39,9 +63,7 @@ public class Signup_Frame extends javax.swing.JFrame {
         txt_fname = new textfield.TextField();
         txt_uname = new textfield.TextField();
         lbl_uname_err = new javax.swing.JLabel();
-        txt_pwd = new textfield.TextField();
         lbl_pwd_err = new javax.swing.JLabel();
-        txt_cpwd = new textfield.TextField();
         txt_dob1 = new button.Button();
         txt_cont_no = new textfield.TextField();
         lbl_cont_err = new javax.swing.JLabel();
@@ -50,20 +72,32 @@ public class Signup_Frame extends javax.swing.JFrame {
         question1 = new textfield.TextField();
         question2 = new textfield.TextField();
         question3 = new textfield.TextField();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         txt_dob = new textfield.TextField();
         lbl_age = new javax.swing.JLabel();
+        txt_cpwd = new passwordfield.PasswordField();
+        txt_pwd = new passwordfield.PasswordField();
+        button1 = new button.Button();
+        button2 = new button.Button();
         background = new javax.swing.JLabel();
 
+        calendar.setForeground(new java.awt.Color(255, 226, 57));
+        calendar.setDateFormat("yyyy-MM-dd");
         calendar.setTextRefernce(txt_dob);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        login_pane.setBackground(new java.awt.Color(62, 62, 62));
+        login_pane.setBackground(new java.awt.Color(50, 50, 50));
         login_pane.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         login_pane.setRoundBottomLeft(40);
         login_pane.setRoundBottomRight(40);
@@ -111,15 +145,24 @@ public class Signup_Frame extends javax.swing.JFrame {
 
         scroll.setBorder(null);
 
-        scrollpanel.setBackground(new java.awt.Color(62, 62, 62));
-        scrollpanel.setBorder(null);
+        scrollpanel.setBackground(new java.awt.Color(50, 50, 50));
+        scrollpanel.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
         scrollpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_fname.setBackground(new java.awt.Color(66, 66, 66));
+        txt_fname.setBackground(new java.awt.Color(70, 70, 70));
         txt_fname.setForeground(new java.awt.Color(183, 183, 183));
         txt_fname.setText("    Full Name");
-        txt_fname.setRound(45);
-        txt_fname.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_fname.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_fname.setRound(30);
+        txt_fname.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_fname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_fnameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_fnameFocusLost(evt);
+            }
+        });
         txt_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fnameActionPerformed(evt);
@@ -127,11 +170,20 @@ public class Signup_Frame extends javax.swing.JFrame {
         });
         scrollpanel.add(txt_fname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 270, -1));
 
-        txt_uname.setBackground(new java.awt.Color(66, 66, 66));
+        txt_uname.setBackground(new java.awt.Color(70, 70, 70));
         txt_uname.setForeground(new java.awt.Color(183, 183, 183));
         txt_uname.setText("    Username");
-        txt_uname.setRound(45);
-        txt_uname.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_uname.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_uname.setRound(30);
+        txt_uname.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_uname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_unameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_unameFocusLost(evt);
+            }
+        });
         txt_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_unameActionPerformed(evt);
@@ -160,26 +212,6 @@ public class Signup_Frame extends javax.swing.JFrame {
         });
         scrollpanel.add(lbl_uname_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 270, 20));
 
-        txt_pwd.setBackground(new java.awt.Color(66, 66, 66));
-        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
-        txt_pwd.setText("    Enter Password");
-        txt_pwd.setRound(45);
-        txt_pwd.setShadowColor(new java.awt.Color(255, 226, 57));
-        txt_pwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pwdActionPerformed(evt);
-            }
-        });
-        txt_pwd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_pwdKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_pwdKeyReleased(evt);
-            }
-        });
-        scrollpanel.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 270, -1));
-
         lbl_pwd_err.setBackground(new java.awt.Color(66, 66, 66));
         lbl_pwd_err.setForeground(new java.awt.Color(254, 112, 113));
         lbl_pwd_err.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -191,26 +223,6 @@ public class Signup_Frame extends javax.swing.JFrame {
             }
         });
         scrollpanel.add(lbl_pwd_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 270, 20));
-
-        txt_cpwd.setBackground(new java.awt.Color(66, 66, 66));
-        txt_cpwd.setForeground(new java.awt.Color(183, 183, 183));
-        txt_cpwd.setText("    Confirm Password");
-        txt_cpwd.setRound(45);
-        txt_cpwd.setShadowColor(new java.awt.Color(255, 226, 57));
-        txt_cpwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cpwdActionPerformed(evt);
-            }
-        });
-        txt_cpwd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_cpwdKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_cpwdKeyReleased(evt);
-            }
-        });
-        scrollpanel.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 270, -1));
 
         txt_dob1.setBackground(new java.awt.Color(66, 66, 66));
         txt_dob1.setForeground(new java.awt.Color(183, 183, 183));
@@ -224,11 +236,20 @@ public class Signup_Frame extends javax.swing.JFrame {
         });
         scrollpanel.add(txt_dob1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 50, -1));
 
-        txt_cont_no.setBackground(new java.awt.Color(66, 66, 66));
+        txt_cont_no.setBackground(new java.awt.Color(70, 70, 70));
         txt_cont_no.setForeground(new java.awt.Color(183, 183, 183));
         txt_cont_no.setText("    Contact No.");
-        txt_cont_no.setRound(45);
-        txt_cont_no.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_cont_no.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_cont_no.setRound(30);
+        txt_cont_no.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_cont_no.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_cont_noFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_cont_noFocusLost(evt);
+            }
+        });
         txt_cont_no.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cont_noActionPerformed(evt);
@@ -262,11 +283,20 @@ public class Signup_Frame extends javax.swing.JFrame {
         jLabel1.setText("Security Questions");
         scrollpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 410, -1, 20));
 
-        question1.setBackground(new java.awt.Color(66, 66, 66));
+        question1.setBackground(new java.awt.Color(70, 70, 70));
         question1.setForeground(new java.awt.Color(183, 183, 183));
         question1.setText("    What is your favourite food?");
-        question1.setRound(45);
-        question1.setShadowColor(new java.awt.Color(255, 226, 57));
+        question1.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        question1.setRound(30);
+        question1.setShadowColor(new java.awt.Color(175, 152, 20));
+        question1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                question1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                question1FocusLost(evt);
+            }
+        });
         question1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 question1ActionPerformed(evt);
@@ -274,11 +304,20 @@ public class Signup_Frame extends javax.swing.JFrame {
         });
         scrollpanel.add(question1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 270, -1));
 
-        question2.setBackground(new java.awt.Color(66, 66, 66));
+        question2.setBackground(new java.awt.Color(70, 70, 70));
         question2.setForeground(new java.awt.Color(183, 183, 183));
         question2.setText("    What is your hobby?");
-        question2.setRound(45);
-        question2.setShadowColor(new java.awt.Color(255, 226, 57));
+        question2.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        question2.setRound(30);
+        question2.setShadowColor(new java.awt.Color(175, 152, 20));
+        question2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                question2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                question2FocusLost(evt);
+            }
+        });
         question2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 question2ActionPerformed(evt);
@@ -286,23 +325,32 @@ public class Signup_Frame extends javax.swing.JFrame {
         });
         scrollpanel.add(question2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, 270, -1));
 
-        question3.setBackground(new java.awt.Color(66, 66, 66));
+        question3.setBackground(new java.awt.Color(70, 70, 70));
         question3.setForeground(new java.awt.Color(183, 183, 183));
         question3.setText("    What is your favourite place?");
-        question3.setRound(45);
-        question3.setShadowColor(new java.awt.Color(255, 226, 57));
+        question3.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        question3.setRound(30);
+        question3.setShadowColor(new java.awt.Color(175, 152, 20));
+        question3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                question3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                question3FocusLost(evt);
+            }
+        });
         question3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 question3ActionPerformed(evt);
             }
         });
         scrollpanel.add(question3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 570, 270, -1));
-        scrollpanel.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, -1));
 
-        txt_dob.setBackground(new java.awt.Color(66, 66, 66));
+        txt_dob.setBackground(new java.awt.Color(70, 70, 70));
         txt_dob.setForeground(new java.awt.Color(183, 183, 183));
-        txt_dob.setRound(45);
-        txt_dob.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_dob.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_dob.setRound(30);
+        txt_dob.setShadowColor(new java.awt.Color(175, 152, 20));
         txt_dob.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_dobMouseClicked(evt);
@@ -325,6 +373,58 @@ public class Signup_Frame extends javax.swing.JFrame {
         lbl_age.setForeground(new java.awt.Color(254, 112, 113));
         scrollpanel.add(lbl_age, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 270, 20));
 
+        txt_cpwd.setBackground(new java.awt.Color(70, 70, 70));
+        txt_cpwd.setForeground(new java.awt.Color(183, 183, 183));
+        txt_cpwd.setText("    Confirm Password");
+        txt_cpwd.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_cpwd.setRound(30);
+        txt_cpwd.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_cpwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_cpwdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_cpwdFocusLost(evt);
+            }
+        });
+        scrollpanel.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 270, -1));
+
+        txt_pwd.setBackground(new java.awt.Color(70, 70, 70));
+        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
+        txt_pwd.setText("    Enter Password");
+        txt_pwd.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_pwd.setRound(30);
+        txt_pwd.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_pwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusLost(evt);
+            }
+        });
+        scrollpanel.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 270, -1));
+
+        button1.setBackground(new java.awt.Color(255, 226, 57));
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/eye.png"))); // NOI18N
+        button1.setRound(60);
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        scrollpanel.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 50, 50));
+
+        button2.setBackground(new java.awt.Color(255, 226, 57));
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/eye.png"))); // NOI18N
+        button2.setRound(60);
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
+        scrollpanel.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 50, 50));
+
         scroll.setViewportView(scrollpanel);
 
         login_pane.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 400, 340));
@@ -332,6 +432,11 @@ public class Signup_Frame extends javax.swing.JFrame {
         main_panel.add(login_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 400, 640));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/background.png"))); // NOI18N
+        background.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                backgroundFocusGained(evt);
+            }
+        });
         main_panel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 740));
 
         getContentPane().add(main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1250, 740));
@@ -346,7 +451,7 @@ public class Signup_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_signinActionPerformed
 
     private void btn_signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signupActionPerformed
-        RegisterController rcontrol= new RegisterController(getuser(),this);
+        RegisterController rcontrol = new RegisterController(getuser(), this);
         rcontrol.registeruser();
     }//GEN-LAST:event_btn_signupActionPerformed
 
@@ -357,14 +462,6 @@ public class Signup_Frame extends javax.swing.JFrame {
     private void txt_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_unameActionPerformed
-
-    private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pwdActionPerformed
-
-    private void txt_cpwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cpwdActionPerformed
 
     private void txt_cont_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cont_noActionPerformed
         // TODO add your handling code here:
@@ -381,24 +478,6 @@ public class Signup_Frame extends javax.swing.JFrame {
     private void question2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_question2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_question2ActionPerformed
-
-    private void txt_pwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyPressed
-        if (txt_pwd.getText().length() < 8) {
-            lbl_pwd_err.setText("Password Must be 8 characters long.");
-        } else {
-            lbl_pwd_err.setText("");
-        }
-
-    }//GEN-LAST:event_txt_pwdKeyPressed
-
-    private void txt_pwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyReleased
-        if (txt_pwd.getText().length() < 8) {
-            lbl_pwd_err.setText("Password Must be 8 characters long.");
-        } else {
-            lbl_pwd_err.setText("");
-
-        }
-    }//GEN-LAST:event_txt_pwdKeyReleased
 
     private void txt_cont_noKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cont_noKeyPressed
         if (txt_cont_no.getText().length() == 10) {
@@ -453,7 +532,6 @@ public class Signup_Frame extends javax.swing.JFrame {
         } else {
             lbl_uname_err.setText("");
         }
-
     }//GEN-LAST:event_txt_unameKeyReleased
 
     private void txt_unameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_unameKeyPressed
@@ -463,21 +541,6 @@ public class Signup_Frame extends javax.swing.JFrame {
             lbl_uname_err.setText("");
         }
     }//GEN-LAST:event_txt_unameKeyPressed
-
-    private void txt_cpwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyPressed
-        if (!samepwd(txt_pwd.getText(), txt_cpwd.getText())) {
-            lbl_pwd_err.setText("Passwords Don't Match.Try Again.");
-
-        } else
-            lbl_pwd_err.setText("");
-    }//GEN-LAST:event_txt_cpwdKeyPressed
-
-    private void txt_cpwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyReleased
-        if (!samepwd(txt_pwd.getText(), txt_cpwd.getText())) {
-            lbl_pwd_err.setText("Passwords Don't Match.Try Again.");
-        } else
-            lbl_pwd_err.setText("");
-    }//GEN-LAST:event_txt_cpwdKeyReleased
 
     private void txt_dob1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_dob1ActionPerformed
         calendar.showPopup();
@@ -502,9 +565,152 @@ public class Signup_Frame extends javax.swing.JFrame {
             lbl_age.setText("");
     }//GEN-LAST:event_txt_dobMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void txt_unameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusGained
+        if (txt_uname.getText().equals("    Username")) {
+            txt_uname.setText(null);
+            txt_uname.requestFocus();
+            removePlaceholderStyle(txt_uname);
+        }
+    }//GEN-LAST:event_txt_unameFocusGained
+
+    private void txt_unameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusLost
+        if (txt_uname.getText().length() == 0) {
+            addPlaceholderStyle(txt_uname);
+            txt_uname.setText("    Username");
+        }
+        Assert.assertEquals(false,txt_cpwd.getText().length()==0);
+    }//GEN-LAST:event_txt_unameFocusLost
+
+    private void txt_fnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_fnameFocusGained
+        if (txt_fname.getText().equals("    Full Name")) {
+            txt_fname.setText(null);
+            txt_fname.requestFocus();
+            removePlaceholderStyle(txt_fname);
+        }
+        
+    }//GEN-LAST:event_txt_fnameFocusGained
+
+    private void txt_fnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_fnameFocusLost
+        if (txt_fname.getText().length() == 0) {
+            addPlaceholderStyle(txt_fname);
+            txt_fname.setText("    Full Name");
+        }
+        Assert.assertEquals(false,txt_fname.getText().length()==0);
+    }//GEN-LAST:event_txt_fnameFocusLost
+
+    private void txt_cont_noFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cont_noFocusGained
+        if (txt_cont_no.getText().equals("    Contact No.")) {
+            txt_cont_no.setText(null);
+            txt_cont_no.requestFocus();
+            removePlaceholderStyle(txt_cont_no);
+        }
+    }//GEN-LAST:event_txt_cont_noFocusGained
+
+    private void txt_cont_noFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cont_noFocusLost
+        if (txt_cont_no.getText().length() == 0) {
+            addPlaceholderStyle(txt_cont_no);
+            txt_cont_no.setText("    Contact No.");
+        }
+        Assert.assertEquals(false,txt_cont_no.getText().length()==0);
+    }//GEN-LAST:event_txt_cont_noFocusLost
+
+    private void question1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question1FocusGained
+        if (question1.getText().equals("    What is your favourite food?")) {
+            question1.setText(null);
+            question1.requestFocus();
+            removePlaceholderStyle(question1);
+        }
+    }//GEN-LAST:event_question1FocusGained
+
+    private void question1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question1FocusLost
+        if (question1.getText().length() == 0) {
+            addPlaceholderStyle(question1);
+            question1.setText("    What is your favourite food?");
+        }
+        Assert.assertEquals(false,question1.getText().length()==0);
+    }//GEN-LAST:event_question1FocusLost
+
+    private void question2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question2FocusGained
+        if (question2.getText().equals("    What is your hobby?")) {
+            question2.setText(null);
+            question2.requestFocus();
+            removePlaceholderStyle(question2);
+        }
+        
+    }//GEN-LAST:event_question2FocusGained
+
+    private void question2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question2FocusLost
+        if (question2.getText().length() == 0) {
+            addPlaceholderStyle(question2);
+            question2.setText("    What is your hobby?");
+        }
+       Assert.assertEquals(false,question2.getText().length()==0);
+    }//GEN-LAST:event_question2FocusLost
+
+    private void question3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question3FocusGained
+        if (question3.getText().equals("    What is your favourite place?")) {
+            question3.setText(null);
+            question3.requestFocus();
+            removePlaceholderStyle(question3);
+        }
+    }//GEN-LAST:event_question3FocusGained
+
+    private void question3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_question3FocusLost
+        if (question3.getText().length() == 0) {
+            addPlaceholderStyle(question3);
+            question3.setText("    What is your favourite place?");
+        }
+       Assert.assertEquals(false,question3.getText().length()==0);
+    }//GEN-LAST:event_question3FocusLost
+
+    private void backgroundFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_backgroundFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backgroundFocusGained
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        txt_pwd.togglepwdview();
+    }//GEN-LAST:event_button2ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        txt_cpwd.togglepwdview();
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void txt_pwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusGained
+        if (txt_pwd.getText().equals("    Enter Password")) {
+            txt_pwd.setText(null);
+            txt_pwd.requestFocus();
+            removePlaceholderStyle(txt_pwd);
+        }
+    }//GEN-LAST:event_txt_pwdFocusGained
+
+    private void txt_pwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusLost
+        if (txt_pwd.getText().length() == 0) {
+            addPlaceholderStyle(txt_pwd);
+            txt_pwd.setText("    Enter Password");
+        }
+        Assert.assertEquals(false,txt_pwd.getText().length()==0);
+    }//GEN-LAST:event_txt_pwdFocusLost
+
+    private void txt_cpwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cpwdFocusGained
+        if (txt_cpwd.getText().equals("    Confirm Password")) {
+            txt_cpwd.setText(null);
+            txt_cpwd.requestFocus();
+            removePlaceholderStyle(txt_cpwd);
+        }
+    }//GEN-LAST:event_txt_cpwdFocusGained
+
+    private void txt_cpwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cpwdFocusLost
+        if (txt_cpwd.getText().length() == 0) {
+            addPlaceholderStyle(txt_cpwd);
+            txt_cpwd.setText("    Confirm Password");
+        }
+        Assert.assertEquals(true,txt_cpwd.getText().length()==0);
+    }//GEN-LAST:event_txt_cpwdFocusLost
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -544,75 +750,74 @@ public class Signup_Frame extends javax.swing.JFrame {
         String uname = txt_uname.getText();
         String pawd = txt_pwd.getText();
         String cpawd = txt_cpwd.getText();
-//        String dob_ = txt_dob.getText();
         String cont = txt_cont_no.getText();
         String qu1 = question1.getText();
         String qu2 = question2.getText();
         String qu3 = question3.getText();
 
         if (!fullnamevalidation(fname)) {
-            JOptionPane.showMessageDialog(this, "Please enter your Full name");
+            displaymessage("Please enter your Full name");
             return false;
         }
         if (!usernamevalidation(uname)) {
-            JOptionPane.showMessageDialog(this, "Please enter your User name");
+            displaymessage("Please enter your User name");
             return false;
         }
         if (checkUsernameExists(uname)) {
-            JOptionPane.showMessageDialog(this, "Username Already Exists.Try a unique one.");
+            displaymessage("Username Already Exists.Try a unique one");
             return false;
         }
         if (!pwdvalidation(pawd)) {
-            JOptionPane.showMessageDialog(this, "Please Enter your Password");
+            displaymessage("Please Enter your Password");
             return false;
         }
         if (pawd.length() < 8) {
-            JOptionPane.showMessageDialog(this, "Password must be 8 characters long");
+            displaymessage("Password must be 8 characters long");
             return false;
         }
         if (!cpwdvalidation(cpawd)) {
-            JOptionPane.showMessageDialog(this, "Please Confirm your Password");
+            displaymessage("Please Confirm your Password");
             return false;
         }
         if (!samepwd(pawd, cpawd)) {
-            JOptionPane.showMessageDialog(this, "Passwords don't match.Try Again.");
+            displaymessage("Passwords don't match.Try Again.");
             return false;
         }
 
         if (!isOlderThan18(txt_dob.getText())) {
-            JOptionPane.showMessageDialog(this, "You must be 18 years or above.");
+            displaymessage("You must be 18 years or above.");
             return false;
         }
 
         if (!contactvalidation(cont)) {
-            JOptionPane.showMessageDialog(this, "Enter your Contact Number");
+            displaymessage("Enter your Contact Number");
             return false;
         }
         if (cont.length() != 10) {
-            JOptionPane.showMessageDialog(this, "Contact must be 10 digits long");
+            displaymessage("Contact must be 10 digits long");
             return false;
         }
         if (checkContactNoExists(txt_cont_no.getText())) {
-            JOptionPane.showMessageDialog(this, "Contact already in use");
+            displaymessage("Contact already in use");
             return false;
         }
         if (!q1validation(qu1)) {
-            JOptionPane.showMessageDialog(this, "Please answer your favourite food");
+            displaymessage("Please answer your favourite food");
             return false;
         }
         if (!q2validation(qu2)) {
-            JOptionPane.showMessageDialog(this, "Please answer your hobby");
+            displaymessage("Please answer your hobby");
             return false;
         }
         if (!q3validation(qu3)) {
-            JOptionPane.showMessageDialog(this, "Please answer your favourite place");
+            displaymessage("Please answer your favourite place");
             return false;
         }
         return true;
     }
-    
-    public RegisterModel getuser(){
-        RegisterModel rmodel= new RegisterModel(
+
+    public RegisterModel getuser() {
+        RegisterModel rmodel = new RegisterModel(
                 txt_fname.getText(),
                 txt_uname.getText(),
                 txt_pwd.getText(),
@@ -622,22 +827,23 @@ public class Signup_Frame extends javax.swing.JFrame {
                 question1.getText(),
                 question2.getText(),
                 question3.getText());
-    return rmodel;
+        return rmodel;
     }
-    
-    public void displaymessage(String msg){
-        JOptionPane.showMessageDialog(rootPane, msg);
+
+    public void displaymessage(String msg) {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Assets/error.png"));
+        JOptionPane.showMessageDialog(this, msg, "Operation Status", JOptionPane.INFORMATION_MESSAGE, icon);
     }
-    
-    public void clearfields(){
-    txt_fname.setText("    Full Name");
-    txt_uname.setText("    User Name");
-    txt_pwd.setText("    Enter Password");
-    txt_cpwd.setText("    Confirm Password");
-    txt_cont_no.setText("   Contact No.");
-    question1.setText("    What is your favourite food?");
-    question2.setText("    What is your hobby?");
-    question3.setText("    What is your favourite place?");
+
+    public void clearfields() {
+        txt_fname.setText("    Full Name");
+        txt_uname.setText("    User Name");
+        txt_pwd.setText("    Enter Password");
+        txt_cpwd.setText("    Confirm Password");
+        txt_cont_no.setText("   Contact No.");
+        question1.setText("    What is your favourite food?");
+        question2.setText("    What is your hobby?");
+        question3.setText("    What is your favourite place?");
 
     }
 
@@ -647,9 +853,10 @@ public class Signup_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private button.Button btn_signin;
     private button.Button btn_signup;
+    private button.Button button1;
+    private button.Button button2;
     private view.custom.datechooser.DateChooser calendar;
     private javax.swing.JLabel coin_logo;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -665,11 +872,11 @@ public class Signup_Frame extends javax.swing.JFrame {
     private javax.swing.JScrollPane scroll;
     private javax.swing.JPanel scrollpanel;
     private textfield.TextField txt_cont_no;
-    private textfield.TextField txt_cpwd;
+    private passwordfield.PasswordField txt_cpwd;
     private textfield.TextField txt_dob;
     private button.Button txt_dob1;
     private textfield.TextField txt_fname;
-    private textfield.TextField txt_pwd;
+    private passwordfield.PasswordField txt_pwd;
     private textfield.TextField txt_uname;
     // End of variables declaration//GEN-END:variables
 

@@ -4,6 +4,10 @@
   <NonVisualComponents>
     <Component class="view.custom.datechooser.DateChooser" name="calendar">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="39" green="e2" red="ff" type="rgb"/>
+        </Property>
+        <Property name="dateFormat" type="java.lang.String" value="yyyy-MM-dd"/>
         <Property name="textRefernce" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="txt_dob"/>
         </Property>
@@ -20,6 +24,9 @@
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowGainedFocus" listener="java.awt.event.WindowFocusListener" parameters="java.awt.event.WindowEvent" handler="formWindowGainedFocus"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -50,7 +57,7 @@
         <Container class="test.RoundPanel" name="login_pane">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="3e" green="3e" red="3e" type="rgb"/>
+              <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Noto Sans" size="18" style="0"/>
@@ -186,10 +193,10 @@
                 <Container class="javax.swing.JPanel" name="scrollpanel">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="3e" green="3e" red="3e" type="rgb"/>
+                      <Color blue="32" green="32" red="32" type="rgb"/>
                     </Property>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="null"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Noto Sans" size="16" style="0"/>
                     </Property>
                   </Properties>
 
@@ -200,18 +207,23 @@
                     <Component class="textfield.TextField" name="txt_fname">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    Full Name"/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_fnameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_fnameFocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_fnameActionPerformed"/>
                       </Events>
                       <Constraints>
@@ -223,18 +235,23 @@
                     <Component class="textfield.TextField" name="txt_uname">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    Username"/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_unameFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_unameFocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_unameActionPerformed"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_unameKeyPressed"/>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_unameKeyReleased"/>
@@ -267,31 +284,6 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="textfield.TextField" name="txt_pwd">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="b7" green="b7" red="b7" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="    Enter Password"/>
-                        <Property name="round" type="int" value="45"/>
-                        <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_pwdActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pwdKeyPressed"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_pwdKeyReleased"/>
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="60" y="140" width="270" height="-1"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="lbl_pwd_err">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -308,31 +300,6 @@
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="70" y="180" width="270" height="20"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
-                    <Component class="textfield.TextField" name="txt_cpwd">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="b7" green="b7" red="b7" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="    Confirm Password"/>
-                        <Property name="round" type="int" value="45"/>
-                        <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cpwdActionPerformed"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cpwdKeyPressed"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cpwdKeyReleased"/>
-                      </Events>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="60" y="200" width="270" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -362,18 +329,23 @@
                     <Component class="textfield.TextField" name="txt_cont_no">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    Contact No."/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cont_noFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cont_noFocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_cont_noActionPerformed"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cont_noKeyPressed"/>
                         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cont_noKeyReleased"/>
@@ -436,18 +408,23 @@
                     <Component class="textfield.TextField" name="question1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    What is your favourite food?"/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question1FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question1FocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="question1ActionPerformed"/>
                       </Events>
                       <Constraints>
@@ -459,18 +436,23 @@
                     <Component class="textfield.TextField" name="question2">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    What is your hobby?"/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question2FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question2FocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="question2ActionPerformed"/>
                       </Events>
                       <Constraints>
@@ -482,18 +464,23 @@
                     <Component class="textfield.TextField" name="question3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="    What is your favourite place?"/>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question3FocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="question3FocusLost"/>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="question3ActionPerformed"/>
                       </Events>
                       <Constraints>
@@ -502,24 +489,20 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JDesktopPane" name="jDesktopPane1">
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="130" y="310" width="-1" height="-1"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="textfield.TextField" name="txt_dob">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="42" green="42" red="42" type="rgb"/>
+                          <Color blue="46" green="46" red="46" type="rgb"/>
                         </Property>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="b7" green="b7" red="b7" type="rgb"/>
                         </Property>
-                        <Property name="round" type="int" value="45"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
                         <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                          <Color blue="14" green="98" red="af" type="rgb"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -549,6 +532,98 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+                    <Component class="passwordfield.PasswordField" name="txt_cpwd">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="46" green="46" red="46" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="b7" green="b7" red="b7" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="    Confirm Password"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
+                        <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="14" green="98" red="af" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cpwdFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_cpwdFocusLost"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="60" y="200" width="270" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="passwordfield.PasswordField" name="txt_pwd">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="46" green="46" red="46" type="rgb"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="b7" green="b7" red="b7" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="    Enter Password"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Noto Sans" size="16" style="0"/>
+                        </Property>
+                        <Property name="round" type="int" value="30"/>
+                        <Property name="shadowColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="14" green="98" red="af" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_pwdFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_pwdFocusLost"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="60" y="140" width="270" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="button.Button" name="button1">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Assets/eye.png"/>
+                        </Property>
+                        <Property name="round" type="int" value="60"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="330" y="200" width="50" height="50"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="button.Button" name="button2">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="39" green="e2" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/Assets/eye.png"/>
+                        </Property>
+                        <Property name="round" type="int" value="60"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button2ActionPerformed"/>
+                      </Events>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="330" y="140" width="50" height="50"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -561,6 +636,9 @@
               <Image iconType="3" name="/Assets/background.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="backgroundFocusGained"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="0" y="0" width="1250" height="740"/>

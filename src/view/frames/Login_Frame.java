@@ -1,17 +1,34 @@
 package view.frames;
 
-import static Controller.LinkManager.SignupFrame;
-import Controller.LoginController;
-import static DataAccess.dbaccess.checkUsernameExists;
 import model.LoginModel;
 import static model.LoginModel.*;
+import static Controller.LinkManager.*;
+import static DAO.uqueries.checkUsernameExists;
+import Controller.LoginController;
+import Controller.DashController;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import junit.framework.Assert;
+import model.DashModel;
 
 public class Login_Frame extends javax.swing.JFrame {
 
     public Login_Frame() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icon.png")));
+        addPlaceholderStyle(txt_uname);
+        addPlaceholderStyle(txt_pwd);
+    }
+
+    public void addPlaceholderStyle(JTextField textField) {
+
+    }
+
+    public void removePlaceholderStyle(JTextField textField) {
+
     }
 
     @SuppressWarnings("unchecked")
@@ -24,18 +41,25 @@ public class Login_Frame extends javax.swing.JFrame {
         coin_logo = new javax.swing.JLabel();
         Login_to_aacc = new javax.swing.JLabel();
         txt_uname = new textfield.TextField();
-        txt_pwd = new textfield.TextField();
-        lbl_err = new javax.swing.JLabel();
         btn_signin = new button.Button();
         btn_signup = new button.Button();
         jSeparator1 = new javax.swing.JSeparator();
         btn_signup1 = new button.Button();
         jSeparator2 = new javax.swing.JSeparator();
         lbl_uname_err = new javax.swing.JLabel();
+        txt_pwd = new passwordfield.PasswordField();
+        button1 = new button.Button();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,11 +87,20 @@ public class Login_Frame extends javax.swing.JFrame {
         Login_to_aacc.setText("Login to your Account");
         login_pane.add(Login_to_aacc, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
-        txt_uname.setBackground(new java.awt.Color(66, 66, 66));
+        txt_uname.setBackground(new java.awt.Color(70, 70, 70));
         txt_uname.setForeground(new java.awt.Color(183, 183, 183));
         txt_uname.setText("    Username");
-        txt_uname.setRound(45);
-        txt_uname.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_uname.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_uname.setRound(30);
+        txt_uname.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_uname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_unameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_unameFocusLost(evt);
+            }
+        });
         txt_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_unameActionPerformed(evt);
@@ -81,23 +114,7 @@ public class Login_Frame extends javax.swing.JFrame {
                 txt_unameKeyReleased(evt);
             }
         });
-        login_pane.add(txt_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 270, -1));
-
-        txt_pwd.setBackground(new java.awt.Color(66, 66, 66));
-        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
-        txt_pwd.setText("    Enter Password");
-        txt_pwd.setRound(45);
-        txt_pwd.setShadowColor(new java.awt.Color(255, 226, 57));
-        txt_pwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pwdActionPerformed(evt);
-            }
-        });
-        login_pane.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 270, -1));
-
-        lbl_err.setBackground(new java.awt.Color(66, 66, 66));
-        lbl_err.setForeground(new java.awt.Color(254, 112, 113));
-        login_pane.add(lbl_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 110, 20));
+        login_pane.add(txt_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 290, -1));
 
         btn_signin.setBackground(new java.awt.Color(255, 226, 57));
         btn_signin.setText("Sign In");
@@ -119,8 +136,8 @@ public class Login_Frame extends javax.swing.JFrame {
                 btn_signupActionPerformed(evt);
             }
         });
-        login_pane.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 220, 20));
-        login_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, 200, 10));
+        login_pane.add(btn_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 220, 20));
+        login_pane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 200, 10));
 
         btn_signup1.setBackground(new java.awt.Color(62, 62, 62));
         btn_signup1.setForeground(new java.awt.Color(252, 252, 252));
@@ -134,9 +151,35 @@ public class Login_Frame extends javax.swing.JFrame {
         login_pane.add(btn_signup1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 230, 20));
         login_pane.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 110, 10));
 
-        lbl_uname_err.setBackground(new java.awt.Color(66, 66, 66));
+        lbl_uname_err.setBackground(new java.awt.Color(62, 62, 62));
         lbl_uname_err.setForeground(new java.awt.Color(254, 112, 113));
         login_pane.add(lbl_uname_err, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 240, 20));
+
+        txt_pwd.setBackground(new java.awt.Color(70, 70, 70));
+        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
+        txt_pwd.setText("    Enter Password");
+        txt_pwd.setFont(new java.awt.Font("Noto Sans", 0, 16)); // NOI18N
+        txt_pwd.setRound(30);
+        txt_pwd.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_pwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusLost(evt);
+            }
+        });
+        login_pane.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 290, 50));
+
+        button1.setBackground(new java.awt.Color(255, 226, 57));
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/eye.png"))); // NOI18N
+        button1.setRound(60);
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        login_pane.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 50, 50));
 
         main_panel.add(login_pane, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 380, 490));
 
@@ -156,24 +199,29 @@ public class Login_Frame extends javax.swing.JFrame {
 
     private void btn_signinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signinActionPerformed
         LoginController lcontrol = new LoginController(getuser(), this);
-        lcontrol.verifyuser();
+
+        if (lcontrol.verifyuser().equals("success")) {
+            Dashboard view = new Dashboard();
+            DashModel dmodel = new DashModel();
+            dmodel.setusername(txt_uname.getText());
+            DashController dcontrol = new DashController(dmodel.getusername(), view);
+            view.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btn_signinActionPerformed
 
     private void txt_unameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_unameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_unameActionPerformed
 
-    private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pwdActionPerformed
-
     private void btn_signup1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_signup1ActionPerformed
-        // TODO add your handling code here:
+        Recovery();
+        this.dispose();
     }//GEN-LAST:event_btn_signup1ActionPerformed
 
     private void txt_unameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_unameKeyPressed
         if (!checkUsernameExists(txt_uname.getText())) {
-            lbl_uname_err.setText("Username Doesn't exist");
+            lbl_uname_err.setText("Username doesn't exist");
         } else {
             lbl_uname_err.setText("");
         }
@@ -181,62 +229,74 @@ public class Login_Frame extends javax.swing.JFrame {
 
     private void txt_unameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_unameKeyReleased
         if (!checkUsernameExists(txt_uname.getText())) {
-            lbl_uname_err.setText("Username Doesn't exist");
+            lbl_uname_err.setText("Username doesn't exist");
         } else {
             lbl_uname_err.setText("");
         }
     }//GEN-LAST:event_txt_unameKeyReleased
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_formWindowGainedFocus
 
-        /* Create and display the form */
+    private void txt_unameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusGained
+        if (txt_uname.getText().equals("    Username")) {
+            txt_uname.setText(null);
+            txt_uname.requestFocus();
+            removePlaceholderStyle(txt_uname);
+        }
+    }//GEN-LAST:event_txt_unameFocusGained
+
+    private void txt_unameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusLost
+        if (txt_uname.getText().length() == 0) {
+            addPlaceholderStyle(txt_uname);
+            txt_uname.setText("    Username");
+        }
+        Assert.assertEquals(false,txt_uname.getText().length()==0);
+    }//GEN-LAST:event_txt_unameFocusLost
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        txt_pwd.togglepwdview();
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void txt_pwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusGained
+        if (txt_pwd.getText().equals("    Enter Password")) {
+            txt_pwd.setText(null);
+            txt_pwd.requestFocus();
+            removePlaceholderStyle(txt_pwd);
+        }
+    }//GEN-LAST:event_txt_pwdFocusGained
+
+    private void txt_pwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusLost
+        if (txt_pwd.getText().length() == 0) {
+            addPlaceholderStyle(txt_pwd);
+            txt_pwd.setText("    Enter Password");
+        }
+        Assert.assertEquals(false,txt_pwd.getText().length()==0);
+    }//GEN-LAST:event_txt_pwdFocusLost
+
+    public static void main(String args[]) {
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
             }
         });
     }
+
     public boolean isvalid() {
         String uname = txt_uname.getText();
         String pwd = txt_pwd.getText();
 
         if (!usernamevalidation(uname)) {
-            JOptionPane.showMessageDialog(this, "Please enter your Username");
+            displaymessage("Please enter your Username");
             return false;
         }
         if (!checkUsernameExists(uname)) {
-            JOptionPane.showMessageDialog(this, "Username doesn't Exist.");
+            displaymessage("Username doesn't Exist");
             return false;
         }
         if (!pwdvalidation(pwd)) {
-            JOptionPane.showMessageDialog(this, "Please Enter your Password");
+            displaymessage("Please Enter your Password");
             return false;
         }
         return true;
@@ -248,8 +308,10 @@ public class Login_Frame extends javax.swing.JFrame {
                 txt_pwd.getText());
         return lmodel;
     }
+
     public void displaymessage(String msg) {
-        JOptionPane.showMessageDialog(rootPane, msg);
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Assets/error.png"));
+        JOptionPane.showMessageDialog(this, msg, "Operation Status", JOptionPane.INFORMATION_MESSAGE, icon);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Login_to_aacc;
@@ -258,14 +320,14 @@ public class Login_Frame extends javax.swing.JFrame {
     private button.Button btn_signin;
     private button.Button btn_signup;
     private button.Button btn_signup1;
+    private button.Button button1;
     private javax.swing.JLabel coin_logo;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel lbl_err;
     private javax.swing.JLabel lbl_uname_err;
     private test.RoundPanel login_pane;
     private javax.swing.JPanel main_panel;
-    private textfield.TextField txt_pwd;
+    private passwordfield.PasswordField txt_pwd;
     private textfield.TextField txt_uname;
     // End of variables declaration//GEN-END:variables
 }
