@@ -2,12 +2,15 @@ package view.frames;
 
 import static Controller.LinkManager.*;
 import Controller.RecoveryController;
-import static DAO.queries.*;
+import static DAO.uqueries.*;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import model.RecoveryModel;
 import static model.RecoveryModel.*;
 import view.custom.scrollbar.ScrollBarCustom;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class Recovery extends javax.swing.JFrame {
 
@@ -19,11 +22,27 @@ public class Recovery extends javax.swing.JFrame {
         q3.setEditable(false);
         txt_pwd.setEditable(false);
         txt_cpwd.setEditable(false);
-
+        txt_pwd.togglepwdview();
+        txt_cpwd.togglepwdview();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Assets/icon.png")));
         btn_q.setEnabled(false);
         btn_reset.setEnabled(false);
 
         scroll.setVerticalScrollBar(new ScrollBarCustom());
+        addPlaceholderStyle(txt_uname);
+        addPlaceholderStyle(txt_pwd);
+        addPlaceholderStyle(txt_cpwd);
+        addPlaceholderStyle(q1);
+        addPlaceholderStyle(q2);
+        addPlaceholderStyle(q3);
+    }
+
+    public void addPlaceholderStyle(JTextField textField) {
+
+    }
+
+    public void removePlaceholderStyle(JTextField textField) {
+
     }
 
     @SuppressWarnings("unchecked")
@@ -46,21 +65,30 @@ public class Recovery extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btn_reset = new button.Button();
         jSeparator2 = new javax.swing.JSeparator();
-        txt_cpwd = new textfield.TextField();
         q2 = new textfield.TextField();
         lbl_err1 = new javax.swing.JLabel();
         btn_uname = new button.Button();
         jSeparator3 = new javax.swing.JSeparator();
         q1 = new textfield.TextField();
-        txt_pwd = new textfield.TextField();
         lbl_err2 = new javax.swing.JLabel();
         Login_to_aacc1 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         button1 = new button.Button();
+        txt_pwd = new passwordfield.PasswordField();
+        button2 = new button.Button();
+        txt_cpwd = new passwordfield.PasswordField();
+        button3 = new button.Button();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         main_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,11 +127,19 @@ public class Recovery extends javax.swing.JFrame {
         Login_to_aacc.setText("Enter your New Passoword");
         inner_pane.add(Login_to_aacc, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 570, -1, -1));
 
-        txt_uname.setBackground(new java.awt.Color(66, 66, 66));
+        txt_uname.setBackground(new java.awt.Color(70, 70, 70));
         txt_uname.setForeground(new java.awt.Color(183, 183, 183));
         txt_uname.setText("    Username");
-        txt_uname.setRound(45);
-        txt_uname.setShadowColor(new java.awt.Color(255, 226, 57));
+        txt_uname.setRound(30);
+        txt_uname.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_uname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_unameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_unameFocusLost(evt);
+            }
+        });
         txt_uname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_unameActionPerformed(evt);
@@ -119,11 +155,19 @@ public class Recovery extends javax.swing.JFrame {
         });
         inner_pane.add(txt_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 270, -1));
 
-        q3.setBackground(new java.awt.Color(66, 66, 66));
+        q3.setBackground(new java.awt.Color(70, 70, 70));
         q3.setForeground(new java.awt.Color(183, 183, 183));
         q3.setText("    What is your favourite place?");
-        q3.setRound(45);
-        q3.setShadowColor(new java.awt.Color(255, 226, 57));
+        q3.setRound(30);
+        q3.setShadowColor(new java.awt.Color(175, 152, 20));
+        q3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                q3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                q3FocusLost(evt);
+            }
+        });
         q3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 q3ActionPerformed(evt);
@@ -141,7 +185,7 @@ public class Recovery extends javax.swing.JFrame {
 
         lbl_err3.setBackground(new java.awt.Color(66, 66, 66));
         lbl_err3.setForeground(new java.awt.Color(254, 112, 113));
-        inner_pane.add(lbl_err3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, 360, 20));
+        inner_pane.add(lbl_err3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 710, 300, 20));
 
         btn_q.setBackground(new java.awt.Color(255, 226, 57));
         btn_q.setText("Verify");
@@ -178,36 +222,19 @@ public class Recovery extends javax.swing.JFrame {
         inner_pane.add(btn_reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 730, 150, 50));
         inner_pane.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 340, 10));
 
-        txt_cpwd.setBackground(new java.awt.Color(66, 66, 66));
-        txt_cpwd.setForeground(new java.awt.Color(183, 183, 183));
-        txt_cpwd.setText("    Confirm New Password");
-        txt_cpwd.setRound(45);
-        txt_cpwd.setShadowColor(new java.awt.Color(255, 226, 57));
-        txt_cpwd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                txt_cpwdMouseEntered(evt);
-            }
-        });
-        txt_cpwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_cpwdActionPerformed(evt);
-            }
-        });
-        txt_cpwd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_cpwdKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_cpwdKeyReleased(evt);
-            }
-        });
-        inner_pane.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 270, -1));
-
-        q2.setBackground(new java.awt.Color(66, 66, 66));
+        q2.setBackground(new java.awt.Color(70, 70, 70));
         q2.setForeground(new java.awt.Color(183, 183, 183));
         q2.setText("    What is your hobby?");
-        q2.setRound(45);
-        q2.setShadowColor(new java.awt.Color(255, 226, 57));
+        q2.setRound(30);
+        q2.setShadowColor(new java.awt.Color(175, 152, 20));
+        q2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                q2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                q2FocusLost(evt);
+            }
+        });
         q2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 q2ActionPerformed(evt);
@@ -239,11 +266,19 @@ public class Recovery extends javax.swing.JFrame {
         inner_pane.add(btn_uname, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 150, 50));
         inner_pane.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 340, 10));
 
-        q1.setBackground(new java.awt.Color(66, 66, 66));
+        q1.setBackground(new java.awt.Color(70, 70, 70));
         q1.setForeground(new java.awt.Color(183, 183, 183));
         q1.setText("    What is your favourite food?");
-        q1.setRound(45);
-        q1.setShadowColor(new java.awt.Color(255, 226, 57));
+        q1.setRound(30);
+        q1.setShadowColor(new java.awt.Color(175, 152, 20));
+        q1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                q1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                q1FocusLost(evt);
+            }
+        });
         q1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 q1ActionPerformed(evt);
@@ -259,29 +294,9 @@ public class Recovery extends javax.swing.JFrame {
         });
         inner_pane.add(q1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 270, -1));
 
-        txt_pwd.setBackground(new java.awt.Color(66, 66, 66));
-        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
-        txt_pwd.setText("    New Password");
-        txt_pwd.setRound(45);
-        txt_pwd.setShadowColor(new java.awt.Color(255, 226, 57));
-        txt_pwd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_pwdActionPerformed(evt);
-            }
-        });
-        txt_pwd.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_pwdKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_pwdKeyReleased(evt);
-            }
-        });
-        inner_pane.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, 270, -1));
-
         lbl_err2.setBackground(new java.awt.Color(66, 66, 66));
         lbl_err2.setForeground(new java.awt.Color(254, 112, 113));
-        inner_pane.add(lbl_err2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 360, 20));
+        inner_pane.add(lbl_err2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 310, 20));
 
         Login_to_aacc1.setBackground(new java.awt.Color(62, 62, 62));
         Login_to_aacc1.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
@@ -301,9 +316,80 @@ public class Recovery extends javax.swing.JFrame {
         });
         inner_pane.add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 200, 20));
 
+        txt_pwd.setBackground(new java.awt.Color(70, 70, 70));
+        txt_pwd.setForeground(new java.awt.Color(183, 183, 183));
+        txt_pwd.setText("    New Password");
+        txt_pwd.setRound(30);
+        txt_pwd.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_pwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_pwdFocusLost(evt);
+            }
+        });
+        txt_pwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_pwdActionPerformed(evt);
+            }
+        });
+        txt_pwd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_pwdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_pwdKeyReleased(evt);
+            }
+        });
+        inner_pane.add(txt_pwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, 270, 50));
+
+        button2.setBackground(new java.awt.Color(255, 226, 57));
+        button2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/eye.png"))); // NOI18N
+        button2.setRound(60);
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
+        inner_pane.add(button2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 660, 50, 50));
+
+        txt_cpwd.setBackground(new java.awt.Color(70, 70, 70));
+        txt_cpwd.setForeground(new java.awt.Color(183, 183, 183));
+        txt_cpwd.setText("    Confirm New Password");
+        txt_cpwd.setRound(30);
+        txt_cpwd.setShadowColor(new java.awt.Color(175, 152, 20));
+        txt_cpwd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_cpwdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_cpwdFocusLost(evt);
+            }
+        });
+        txt_cpwd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_cpwdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cpwdKeyReleased(evt);
+            }
+        });
+        inner_pane.add(txt_cpwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 660, 270, 50));
+
+        button3.setBackground(new java.awt.Color(255, 226, 57));
+        button3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/eye.png"))); // NOI18N
+        button3.setRound(60);
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
+        inner_pane.add(button3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 610, 50, 50));
+
         scroll.setViewportView(inner_pane);
 
-        roundPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 410, 260));
+        roundPanel1.add(scroll, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 400, 260));
 
         main_panel.add(roundPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, 405, 430));
 
@@ -351,10 +437,6 @@ public class Recovery extends javax.swing.JFrame {
         rcontrol.resetuser();
     }//GEN-LAST:event_btn_resetActionPerformed
 
-    private void txt_cpwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cpwdActionPerformed
-
     private void q2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_q2ActionPerformed
@@ -380,10 +462,6 @@ public class Recovery extends javax.swing.JFrame {
     private void q1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_q1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_q1ActionPerformed
-
-    private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_pwdActionPerformed
 
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         LoginFrame();
@@ -450,6 +528,70 @@ public class Recovery extends javax.swing.JFrame {
             lbl_err2.setText("");
     }//GEN-LAST:event_q3KeyReleased
 
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        this.requestFocusInWindow();
+    }//GEN-LAST:event_formWindowGainedFocus
+
+    private void txt_unameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusGained
+        if (txt_uname.getText().equals("    Username")) {
+            txt_uname.setText(null);
+            txt_uname.requestFocus();
+            removePlaceholderStyle(txt_uname);
+        }
+    }//GEN-LAST:event_txt_unameFocusGained
+
+    private void txt_unameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_unameFocusLost
+        if (txt_uname.getText().length() == 0) {
+            addPlaceholderStyle(txt_uname);
+            txt_uname.setText("    Username");
+        }
+    }//GEN-LAST:event_txt_unameFocusLost
+
+    private void q1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q1FocusGained
+        if (q1.getText().equals("    What is your favourite food?")) {
+            q1.setText(null);
+            q1.requestFocus();
+            removePlaceholderStyle(q1);
+        }
+    }//GEN-LAST:event_q1FocusGained
+
+    private void q1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q1FocusLost
+        if (q1.getText().length() == 0) {
+            addPlaceholderStyle(q1);
+            q1.setText("    What is your favourite food?");
+        }
+    }//GEN-LAST:event_q1FocusLost
+
+    private void q2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q2FocusGained
+        if (q2.getText().equals("    What is your hobby?")) {
+            q2.setText(null);
+            q2.requestFocus();
+            removePlaceholderStyle(q2);
+        }
+    }//GEN-LAST:event_q2FocusGained
+
+    private void q2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q2FocusLost
+        if (q2.getText().length() == 0) {
+            addPlaceholderStyle(q2);
+            q2.setText("    What is your hobby?");
+        }
+    }//GEN-LAST:event_q2FocusLost
+
+    private void q3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q3FocusGained
+        if (q3.getText().equals("    What is your favourite place?")) {
+            q3.setText(null);
+            q3.requestFocus();
+            removePlaceholderStyle(q3);
+        }
+    }//GEN-LAST:event_q3FocusGained
+
+    private void q3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_q3FocusLost
+        if (q3.getText().length() == 0) {
+            addPlaceholderStyle(q3);
+            q3.setText("    What is your favourite place?");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_q3FocusLost
+
     private void txt_pwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyPressed
         if (!pwdvalidation(txt_pwd.getText())) {
             lbl_err3.setText("Please enter your new password");
@@ -462,6 +604,10 @@ public class Recovery extends javax.swing.JFrame {
             lbl_err3.setText("");
         }
     }//GEN-LAST:event_txt_pwdKeyPressed
+
+    private void txt_pwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pwdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_pwdActionPerformed
 
     private void txt_pwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pwdKeyReleased
         if (!pwdvalidation(txt_pwd.getText())) {
@@ -477,8 +623,8 @@ public class Recovery extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_pwdKeyReleased
 
     private void txt_cpwdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyPressed
-        if (!cpwdvalidation(txt_pwd.getText())) {
-            lbl_err3.setText("Please enter your new password");
+        if (!cpwdvalidation(txt_cpwd.getText())) {
+            lbl_err3.setText("Please confirm your new password");
         } else {
             lbl_err3.setText("");
         }
@@ -489,13 +635,9 @@ public class Recovery extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_cpwdKeyPressed
 
-    private void txt_cpwdMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cpwdMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cpwdMouseEntered
-
     private void txt_cpwdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpwdKeyReleased
-        if (!cpwdvalidation(txt_pwd.getText())) {
-            lbl_err3.setText("Please enter your new password");
+        if (!cpwdvalidation(txt_cpwd.getText())) {
+            lbl_err3.setText("Please confirm your new password");
         } else {
             lbl_err3.setText("");
         }
@@ -505,6 +647,44 @@ public class Recovery extends javax.swing.JFrame {
             lbl_err3.setText("");
         }
     }//GEN-LAST:event_txt_cpwdKeyReleased
+
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        txt_pwd.togglepwdview();
+    }//GEN-LAST:event_button3ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        txt_cpwd.togglepwdview();
+    }//GEN-LAST:event_button2ActionPerformed
+
+    private void txt_pwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusGained
+        if (txt_pwd.getText().equals("    New Password")) {
+            txt_pwd.setText(null);
+            txt_pwd.requestFocus();
+            removePlaceholderStyle(txt_pwd);
+        }
+    }//GEN-LAST:event_txt_pwdFocusGained
+
+    private void txt_pwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_pwdFocusLost
+        if (txt_pwd.getText().length() == 0) {
+            addPlaceholderStyle(txt_pwd);
+            txt_pwd.setText("    New Password");
+        }
+    }//GEN-LAST:event_txt_pwdFocusLost
+
+    private void txt_cpwdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cpwdFocusGained
+        if (txt_cpwd.getText().equals("    Confirm New Password")) {
+            txt_cpwd.setText(null);
+            txt_cpwd.requestFocus();
+            removePlaceholderStyle(txt_cpwd);
+        }
+    }//GEN-LAST:event_txt_cpwdFocusGained
+
+    private void txt_cpwdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_cpwdFocusLost
+        if (txt_cpwd.getText().length() == 0) {
+            addPlaceholderStyle(txt_cpwd);
+            txt_cpwd.setText("    Confirm New Password");
+        }
+    }//GEN-LAST:event_txt_cpwdFocusLost
 
     public static void main(String args[]) {
         try {
@@ -536,7 +716,8 @@ public class Recovery extends javax.swing.JFrame {
     }
 
     public void displaymessage(String msg) {
-        JOptionPane.showMessageDialog(rootPane, msg);
+         ImageIcon icon=new ImageIcon(getClass().getResource("/Assets/error.png"));
+        JOptionPane.showMessageDialog(this, msg, "Operation Status", JOptionPane.INFORMATION_MESSAGE, icon);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -550,6 +731,8 @@ public class Recovery extends javax.swing.JFrame {
     private button.Button btn_signup;
     private button.Button btn_uname;
     private button.Button button1;
+    private button.Button button2;
+    private button.Button button3;
     private javax.swing.JLabel coin_logo;
     private test.RoundPanel inner_pane;
     private javax.swing.JSeparator jSeparator1;
@@ -565,8 +748,8 @@ public class Recovery extends javax.swing.JFrame {
     private textfield.TextField q3;
     private test.RoundPanel roundPanel1;
     private javax.swing.JScrollPane scroll;
-    private textfield.TextField txt_cpwd;
-    private textfield.TextField txt_pwd;
+    private passwordfield.PasswordField txt_cpwd;
+    private passwordfield.PasswordField txt_pwd;
     private textfield.TextField txt_uname;
     // End of variables declaration//GEN-END:variables
 }
